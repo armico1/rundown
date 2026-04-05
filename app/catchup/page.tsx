@@ -91,12 +91,17 @@ export default function CatchUp() {
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
             foot<span className="text-brand-accent">note</span>
           </Link>
-          <Link
-            href="/subscribe"
-            className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
-          >
-            Subscribe Free
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
+              Explore
+            </Link>
+            <Link
+              href="/subscribe"
+              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+            >
+              Subscribe Free
+            </Link>
+          </div>
         </div>
       </nav>
 

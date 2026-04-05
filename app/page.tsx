@@ -83,6 +83,9 @@ export default function Home() {
             foot<span className="text-brand-accent">note</span>
           </div>
           <div className="flex items-center gap-6">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
+              Explore
+            </Link>
             <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
               Catch Me Up
             </Link>
@@ -300,6 +303,7 @@ export default function Home() {
             <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-6">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Explore</Link>
             <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Subscribe</Link>
             <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Catch Me Up</Link>
           </div>
