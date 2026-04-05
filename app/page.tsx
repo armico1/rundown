@@ -8,16 +8,33 @@ const TOPICS = [
   { id: "politics", label: "US Politics", icon: "🏛️" },
   { id: "stocks", label: "Stocks & Markets", icon: "📈" },
   { id: "business-tech", label: "Business & Tech", icon: "💼" },
-  { id: "science", label: "Science & Health", icon: "🔬" },
+  { id: "science", label: "Science", icon: "🔬" },
+  { id: "health", label: "Health & Wellness", icon: "💪" },
   { id: "sports", label: "Sports", icon: "⚽" },
   { id: "entertainment", label: "Entertainment", icon: "🎬" },
   { id: "climate", label: "Climate & Energy", icon: "🌱" },
+  { id: "ai", label: "Artificial Intelligence", icon: "🤖" },
+  { id: "crypto", label: "Crypto & Web3", icon: "₿" },
+  { id: "space", label: "Space", icon: "🚀" },
+  { id: "personal-finance", label: "Personal Finance", icon: "💰" },
+  { id: "real-estate", label: "Real Estate", icon: "🏠" },
+  { id: "food", label: "Food & Dining", icon: "🍽️" },
+  { id: "travel", label: "Travel", icon: "✈️" },
+  { id: "global-economy", label: "Global Economy", icon: "🌐" },
+  { id: "education", label: "Education", icon: "📚" },
+  { id: "law", label: "Law & Justice", icon: "⚖️" },
+  { id: "military", label: "Military & Defense", icon: "🛡️" },
+  { id: "international", label: "International Affairs", icon: "🗺️" },
+  { id: "arts", label: "Arts & Culture", icon: "🎨" },
+  { id: "music", label: "Music", icon: "🎵" },
+  { id: "gaming", label: "Gaming", icon: "🎮" },
+  { id: "religion", label: "Religion & Society", icon: "🕌" },
 ];
 
 const FEATURES = [
   {
     title: "Pick Your Topics",
-    description: "Choose from 8 categories or add your own custom interests. Get only what matters to you.",
+    description: "Choose from 25 categories or add your own custom interests. Get only what matters to you.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
@@ -60,20 +77,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-brand-dark">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/50 bg-brand-dark/80 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-white tracking-tight">
-              foot<span className="text-brand-accent">note</span>
-            </span>
+          <div className="text-xl font-bold text-brand-text tracking-tight">
+            foot<span className="text-brand-accent">note</span>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-white transition-smooth">
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
               Catch Me Up
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-medium px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
             >
               Subscribe Free
             </Link>
@@ -82,23 +97,28 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* Background gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl" />
-        <div className="absolute top-40 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+      <section className="sunrise-hero relative pt-36 pb-28 px-6 overflow-hidden">
+        {/* Sunrise atmosphere orbs */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[380px] rounded-full blur-3xl"
+          style={{ background: "radial-gradient(ellipse, rgba(251,191,36,0.22) 0%, rgba(249,115,22,0.12) 40%, transparent 70%)" }} />
+        <div className="absolute bottom-16 left-1/4 w-80 h-80 bg-orange-300/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-16 right-1/4 w-80 h-80 bg-rose-300/12 rounded-full blur-3xl" />
+        <div className="horizon-line absolute bottom-0 left-0 right-0" />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card/50 mb-8">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card mb-8 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-brand-success animate-pulse" />
-            <span className="text-xs font-medium text-brand-muted uppercase tracking-wider">Free daily briefings</span>
+            <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Free daily briefings</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-extrabold text-white leading-[1.05] mb-6 tracking-tight">
+          {/* Headline */}
+          <h1 className="font-display text-5xl sm:text-[5.5rem] font-bold text-brand-text leading-[1.08] mb-7 tracking-tight">
             Your daily news,<br />
-            <span className="animated-gradient">your way.</span>
+            <span className="italic animated-gradient">your way.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed">
             Footnote delivers a personalized 5-minute news briefing every morning.
             Pick your topics, choose your frequency, read or listen.
             Just the stories that matter to you.
@@ -107,7 +127,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Link
               href="/subscribe"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+              className="group flex items-center gap-2.5 px-9 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
             >
               Get Started Free
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -117,32 +137,38 @@ export default function Home() {
             <span className="text-sm text-brand-muted">No credit card. Unsubscribe anytime.</span>
           </div>
 
-          {/* Floating topic chips preview */}
-          <div className="flex flex-wrap justify-center gap-3 max-w-xl mx-auto">
-            {TOPICS.map((topic) => (
+          {/* Topic chips preview */}
+          <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+            {TOPICS.slice(0, 16).map((topic) => (
               <div
                 key={topic.id}
                 onMouseEnter={() => setHoveredTopic(topic.id)}
                 onMouseLeave={() => setHoveredTopic(null)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-smooth cursor-default ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border transition-smooth cursor-default ${
                   hoveredTopic === topic.id
-                    ? "border-brand-accent bg-brand-accent/10 text-white"
-                    : "border-brand-border bg-brand-card/50 text-brand-muted"
+                    ? "border-brand-accent bg-brand-accent/10 text-brand-text shadow-sm"
+                    : "border-brand-border bg-brand-card/80 text-brand-muted hover:border-brand-accent/40"
                 }`}
               >
-                <span>{topic.icon}</span>
+                <span className="text-sm">{topic.icon}</span>
                 <span className="text-sm font-medium">{topic.label}</span>
               </div>
             ))}
+            <Link
+              href="/subscribe"
+              className="flex items-center px-3.5 py-2 text-sm font-medium text-brand-accent hover:text-brand-accentHover transition-smooth"
+            >
+              +9 more →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="py-24 px-6 border-t border-brand-border/50">
+      <section className="py-24 px-6 border-t border-brand-border/60">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
               News that fits your life
             </h2>
             <p className="text-brand-muted text-lg max-w-xl mx-auto">
@@ -154,12 +180,12 @@ export default function Home() {
             {FEATURES.map((feature, i) => (
               <div
                 key={i}
-                className="group p-6 rounded-2xl border border-brand-border bg-brand-card/30 hover:bg-brand-card/60 hover:border-brand-accent/30 transition-smooth"
+                className="group p-6 rounded-2xl border border-brand-border bg-brand-card card-warm"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4 group-hover:bg-brand-accent/20 transition-smooth">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <h3 className="text-lg font-semibold text-brand-text mb-2">{feature.title}</h3>
                 <p className="text-sm text-brand-muted leading-relaxed">{feature.description}</p>
               </div>
             ))}
@@ -167,17 +193,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social proof / stats */}
-      <section className="py-20 px-6 border-t border-brand-border/50">
+      {/* Stats */}
+      <section className="py-20 px-6 border-t border-brand-border/60 bg-brand-deeper">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-8 text-center">
             {[
               ["5 min", "Average read time"],
-              ["8", "Topic categories"],
+              ["25+", "Topic categories"],
               ["100%", "Free forever"],
             ].map(([stat, label], i) => (
               <div key={i}>
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat}</div>
+                <div className="font-display text-4xl sm:text-5xl font-bold text-brand-accent mb-1">{stat}</div>
                 <div className="text-sm text-brand-muted">{label}</div>
               </div>
             ))}
@@ -185,11 +211,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sample newsletter preview */}
-      <section className="py-24 px-6 border-t border-brand-border/50">
+      {/* Newsletter preview */}
+      <section className="py-24 px-6 border-t border-brand-border/60">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
               Here&apos;s what yours looks like
             </h2>
             <p className="text-brand-muted text-lg">
@@ -197,45 +223,45 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-brand-border bg-brand-card/50 p-8 glow">
+          <div className="rounded-2xl border border-brand-border bg-brand-card p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-brand-border">
-              <div className="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
                 <span className="text-brand-accent font-bold text-sm">fn</span>
               </div>
               <div>
-                <div className="text-white font-semibold text-sm">Footnote</div>
+                <div className="text-brand-text font-semibold text-sm">Footnote</div>
                 <div className="text-brand-muted text-xs">Your personalized briefing</div>
               </div>
-              <div className="ml-auto text-xs text-brand-muted">Today, 8:00 AM</div>
+              <div className="ml-auto text-xs text-brand-muted whitespace-nowrap">Today, 8:00 AM</div>
             </div>
 
             <div className="space-y-6">
-              <p className="text-brand-text">Good morning — here&apos;s what you need to know today.</p>
+              <p className="text-brand-text/80 leading-relaxed">Good morning — here&apos;s what you need to know today.</p>
 
               <div>
-                <h3 className="text-white font-bold mb-1">THE BIG STORY</h3>
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">The Big Story</h3>
                 <p className="text-sm text-brand-muted leading-relaxed">
                   Your top story would appear here, tailored to the topics you selected.
-                  150-250 words covering what happened, why it matters, and what&apos;s next.
+                  150–250 words covering what happened, why it matters, and what&apos;s next.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-white font-bold mb-1">MARKETS TODAY</h3>
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">Markets Today</h3>
                 <p className="text-sm text-brand-muted leading-relaxed">
                   Key market movements, earnings, economic data — only included if you select Stocks & Markets.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-white font-bold mb-1">IN OTHER NEWS</h3>
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">In Other News</h3>
                 <p className="text-sm text-brand-muted leading-relaxed">
-                  3-4 additional stories matching your chosen topics. Each one: headline, quick summary, why it matters.
+                  3–4 additional stories matching your chosen topics. Each one: headline, quick summary, why it matters.
                 </p>
               </div>
 
               <div className="pt-4 border-t border-brand-border text-sm text-brand-muted">
-                That&apos;s your morning rundown. See you tomorrow.
+                That&apos;s your morning rundown. See you tomorrow. ☀️
               </div>
             </div>
           </div>
@@ -243,17 +269,17 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 border-t border-brand-border/50">
+      <section className="py-24 px-6 border-t border-brand-border/60 bg-brand-deeper">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
             Start your mornings informed
           </h2>
-          <p className="text-brand-muted text-lg mb-8">
+          <p className="text-brand-muted text-lg mb-8 leading-relaxed">
             Join Footnote and get the news that matters to you, delivered how you want it. Always free.
           </p>
           <Link
             href="/subscribe"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+            className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
           >
             Subscribe Free
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -264,14 +290,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-brand-border/50 py-12 px-6">
+      <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-sm text-brand-muted">
-            &copy; 2026 Footnote. All rights reserved.
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-bold text-brand-text">
+              foot<span className="text-brand-accent">note</span>
+            </span>
+            <span className="text-brand-border">·</span>
+            <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>
+          </div>
           <div className="flex items-center gap-6">
-            <Link href="/subscribe" className="text-sm text-brand-muted hover:text-white transition-smooth">Subscribe</Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-white transition-smooth">Catch Me Up</Link>
+            <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Subscribe</Link>
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Catch Me Up</Link>
           </div>
         </div>
       </footer>

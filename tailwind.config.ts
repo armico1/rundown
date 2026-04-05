@@ -8,21 +8,21 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#0A0A0A",
-          deeper: "#111111",
-          card: "#1A1A1A",
-          border: "#2A2A2A",
-          accent: "#6366F1",
-          accentHover: "#818CF8",
-          accentGlow: "rgba(99, 102, 241, 0.15)",
-          text: "#E5E5E5",
-          muted: "#888888",
-          success: "#22C55E",
+          dark: "#FFF8F0",
+          deeper: "#FEF0E4",
+          card: "#FFFCF8",
+          border: "#E8D0B8",
+          accent: "#D94A0A",
+          accentHover: "#B83D08",
+          accentGlow: "rgba(217, 74, 10, 0.12)",
+          text: "#1C1108",
+          muted: "#7C6A58",
+          success: "#15803D",
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
       },
     },
   },

@@ -8,10 +8,27 @@ const TOPICS = [
   { id: "politics", label: "US Politics", icon: "🏛️" },
   { id: "stocks", label: "Stocks & Markets", icon: "📈" },
   { id: "business-tech", label: "Business & Tech", icon: "💼" },
-  { id: "science", label: "Science & Health", icon: "🔬" },
+  { id: "science", label: "Science", icon: "🔬" },
+  { id: "health", label: "Health & Wellness", icon: "💪" },
   { id: "sports", label: "Sports", icon: "⚽" },
   { id: "entertainment", label: "Entertainment", icon: "🎬" },
   { id: "climate", label: "Climate & Energy", icon: "🌱" },
+  { id: "ai", label: "Artificial Intelligence", icon: "🤖" },
+  { id: "crypto", label: "Crypto & Web3", icon: "₿" },
+  { id: "space", label: "Space", icon: "🚀" },
+  { id: "personal-finance", label: "Personal Finance", icon: "💰" },
+  { id: "real-estate", label: "Real Estate", icon: "🏠" },
+  { id: "food", label: "Food & Dining", icon: "🍽️" },
+  { id: "travel", label: "Travel", icon: "✈️" },
+  { id: "global-economy", label: "Global Economy", icon: "🌐" },
+  { id: "education", label: "Education", icon: "📚" },
+  { id: "law", label: "Law & Justice", icon: "⚖️" },
+  { id: "military", label: "Military & Defense", icon: "🛡️" },
+  { id: "international", label: "International Affairs", icon: "🗺️" },
+  { id: "arts", label: "Arts & Culture", icon: "🎨" },
+  { id: "music", label: "Music", icon: "🎵" },
+  { id: "gaming", label: "Gaming", icon: "🎮" },
+  { id: "religion", label: "Religion & Society", icon: "🕌" },
 ];
 
 const TIMEFRAMES = [
@@ -47,18 +64,12 @@ export default function CatchUp() {
     setLoading(true);
     setError("");
     setStories(null);
-
     try {
       const res = await fetch("/api/catchup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          topics: selectedTopics,
-          days: parseInt(timeframe),
-        }),
+        body: JSON.stringify({ email, topics: selectedTopics, days: parseInt(timeframe) }),
       });
-
       if (res.ok) {
         const data = await res.json();
         setStories(data.stories || []);
@@ -75,33 +86,32 @@ export default function CatchUp() {
   return (
     <div className="min-h-screen bg-brand-dark">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/50 bg-brand-dark/80 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-white tracking-tight">
+          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
             foot<span className="text-brand-accent">note</span>
           </Link>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/subscribe"
-              className="text-sm font-medium px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
-            >
-              Subscribe Free
-            </Link>
-          </div>
+          <Link
+            href="/subscribe"
+            className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+          >
+            Subscribe Free
+          </Link>
         </div>
       </nav>
 
       <div className="pt-28 pb-20 px-6">
         <div className="max-w-2xl mx-auto">
+
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card/50 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card mb-6 shadow-sm">
               <svg className="w-4 h-4 text-brand-accent" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
               </svg>
-              <span className="text-xs font-medium text-brand-muted uppercase tracking-wider">Instant catch-up</span>
+              <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Instant catch-up</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-brand-text mb-4 tracking-tight">
               Catch Me Up
             </h1>
             <p className="text-lg text-brand-muted max-w-lg mx-auto leading-relaxed">
@@ -120,31 +130,36 @@ export default function CatchUp() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 rounded-xl border border-brand-border bg-brand-card/50 text-white placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-smooth"
+                  className="w-full px-4 py-3 rounded-xl border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth"
                 />
                 <p className="text-xs text-brand-muted mt-1.5">We&apos;ll also send the recap to your inbox.</p>
               </div>
 
               {/* Topics */}
               <div>
-                <label className="block text-sm font-medium text-brand-text mb-3">What topics?</label>
-                <div className="grid grid-cols-2 gap-3">
+                <label className="block text-sm font-medium text-brand-text mb-3">
+                  What topics?
+                  {selectedTopics.length > 0 && (
+                    <span className="ml-2 text-brand-accent font-normal">{selectedTopics.length} selected</span>
+                  )}
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                   {TOPICS.map((topic) => {
                     const selected = selectedTopics.includes(topic.id);
                     return (
                       <button
                         key={topic.id}
                         onClick={() => toggleTopic(topic.id)}
-                        className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-smooth ${
+                        className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-left transition-smooth ${
                           selected
-                            ? "chip-selected border-brand-accent text-white"
-                            : "border-brand-border bg-brand-card/30 text-brand-muted hover:border-brand-accent/50 hover:text-white"
+                            ? "chip-selected text-brand-text"
+                            : "border-brand-border bg-brand-card text-brand-muted hover:border-brand-accent/40 hover:text-brand-text hover:bg-brand-deeper"
                         }`}
                       >
-                        <span className="text-xl">{topic.icon}</span>
-                        <span className="text-sm font-medium">{topic.label}</span>
+                        <span className="text-lg">{topic.icon}</span>
+                        <span className="text-sm font-medium leading-tight">{topic.label}</span>
                         {selected && (
-                          <svg className="w-4 h-4 ml-auto text-brand-accent" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-3.5 h-3.5 ml-auto text-brand-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         )}
@@ -164,18 +179,16 @@ export default function CatchUp() {
                       onClick={() => setTimeframe(tf.id)}
                       className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-smooth ${
                         timeframe === tf.id
-                          ? "chip-selected border-brand-accent"
-                          : "border-brand-border bg-brand-card/30 hover:border-brand-accent/50"
+                          ? "chip-selected"
+                          : "border-brand-border bg-brand-card hover:border-brand-accent/40 hover:bg-brand-deeper"
                       }`}
                     >
                       <div>
-                        <div className={`font-medium ${timeframe === tf.id ? "text-white" : "text-brand-text"}`}>
-                          {tf.label}
-                        </div>
+                        <div className="font-semibold text-brand-text">{tf.label}</div>
                         <div className="text-sm text-brand-muted">{tf.desc}</div>
                       </div>
                       {timeframe === tf.id && (
-                        <div className="w-6 h-6 rounded-full bg-brand-accent flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full bg-brand-accent flex items-center justify-center flex-shrink-0">
                           <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
@@ -186,14 +199,12 @@ export default function CatchUp() {
                 </div>
               </div>
 
-              {/* Error */}
               {error && (
-                <p className="text-red-400 text-sm text-center">{error}</p>
+                <p className="text-red-500 text-sm text-center">{error}</p>
               )}
 
-              {/* Submit */}
               <div className="flex items-center justify-between">
-                <Link href="/" className="text-sm text-brand-muted hover:text-white transition-smooth">
+                <Link href="/" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
                   &larr; Home
                 </Link>
                 <button
@@ -229,17 +240,14 @@ export default function CatchUp() {
             <div>
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Your Catch-Up</h2>
-                  <p className="text-sm text-brand-muted">
+                  <h2 className="font-display text-2xl font-bold text-brand-text">Your Catch-Up</h2>
+                  <p className="text-sm text-brand-muted mt-0.5">
                     {stories.length} stories from the last {timeframe === "1" ? "24 hours" : timeframe === "3" ? "3 days" : "week"}
                   </p>
                 </div>
                 <button
-                  onClick={() => {
-                    setStories(null);
-                    setError("");
-                  }}
-                  className="text-sm text-brand-accent hover:text-brand-accentHover transition-smooth"
+                  onClick={() => { setStories(null); setError(""); }}
+                  className="text-sm text-brand-accent hover:text-brand-accentHover transition-smooth font-medium"
                 >
                   Start over
                 </button>
@@ -250,16 +258,16 @@ export default function CatchUp() {
                   {stories.map((story, i) => (
                     <div
                       key={i}
-                      className="p-5 rounded-2xl border border-brand-border bg-brand-card/30 hover:bg-brand-card/50 transition-smooth"
+                      className="p-5 rounded-2xl border border-brand-border bg-brand-card card-warm"
                     >
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-medium text-brand-accent uppercase tracking-wider">
+                        <span className="text-xs font-semibold text-brand-accent uppercase tracking-wider">
                           {TOPICS.find((t) => t.id === story.topic)?.label || story.topic}
                         </span>
                         <span className="text-brand-border">&middot;</span>
                         <span className="text-xs text-brand-muted">{story.date}</span>
                       </div>
-                      <h3 className="text-white font-semibold mb-1.5">{story.headline}</h3>
+                      <h3 className="font-display text-brand-text font-semibold mb-1.5 leading-snug">{story.headline}</h3>
                       <p className="text-sm text-brand-muted leading-relaxed">{story.summary}</p>
                     </div>
                   ))}
@@ -270,13 +278,13 @@ export default function CatchUp() {
                 </div>
               )}
 
-              <div className="mt-10 p-5 rounded-2xl border border-brand-border bg-brand-card/30 text-center">
+              <div className="mt-10 p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
                 <p className="text-brand-muted text-sm mb-3">
                   Want this delivered to your inbox automatically?
                 </p>
                 <Link
                   href="/subscribe"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-medium text-sm transition-smooth"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
                 >
                   Subscribe Free
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
