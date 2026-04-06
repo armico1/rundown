@@ -62,11 +62,11 @@ const BLOG_POSTS = [
     featured: false,
   },
   {
-    id: "community-mornings",
+    id: "mission",
     category: "Community",
-    title: "How 10,000 readers now start their mornings",
+    title: "Why we want to change how you consume the news",
     excerpt:
-      "We surveyed our most engaged readers. The results surprised us: the biggest change wasn't being more informed — it was feeling less anxious.",
+      "The news isn't broken — the delivery model is. We started Footnote to prove that staying informed shouldn't feel like a second job.",
     author: "The Footnote Team",
     date: "Feb 21, 2026",
     readTime: "3 min read",
@@ -88,42 +88,36 @@ const RUNDOWNS = [
     shortDate: "Apr 5",
     topStory: "Global markets reacted sharply to new tariff announcements, with the S&P 500 sliding 2.1% in early trading.",
     topics: ["Stocks & Markets", "Global Economy", "US Politics"],
-    editions: 847,
   },
   {
     date: "Friday, April 4, 2026",
     shortDate: "Apr 4",
     topStory: "A landmark climate agreement was signed by 40 nations, committing to net-zero emissions in the energy sector by 2040.",
     topics: ["Climate & Energy", "International Affairs", "World News"],
-    editions: 912,
   },
   {
     date: "Thursday, April 3, 2026",
     shortDate: "Apr 3",
     topStory: "OpenAI unveiled its latest model, claiming significant advances in reasoning and coding benchmarks.",
     topics: ["Artificial Intelligence", "Business & Tech", "Science"],
-    editions: 1043,
   },
   {
     date: "Wednesday, April 2, 2026",
     shortDate: "Apr 2",
     topStory: "The Federal Reserve held rates steady, signaling caution amid mixed economic signals from the labor market.",
     topics: ["Stocks & Markets", "US Economy", "Personal Finance"],
-    editions: 889,
   },
   {
     date: "Tuesday, April 1, 2026",
     shortDate: "Apr 1",
     topStory: "A new study found that daily exercise reduces the risk of cognitive decline by 35% in adults over 50.",
     topics: ["Health & Wellness", "Science", "Research"],
-    editions: 776,
   },
   {
     date: "Monday, March 31, 2026",
     shortDate: "Mar 31",
     topStory: "NASA confirmed the discovery of complex organic molecules in a Mars soil sample, reigniting the search for ancient life.",
     topics: ["Space", "Science", "World News"],
-    editions: 1204,
   },
 ];
 
@@ -196,73 +190,6 @@ const PODCAST_PLATFORMS = [
   },
 ];
 
-const REVIEWS = [
-  {
-    name: "Sarah M.",
-    location: "New York, NY",
-    rating: 5,
-    date: "Apr 2, 2026",
-    text: "I used to spend 45 minutes every morning scrolling through news apps, feeling anxious. Now I get my Footnote brief, spend 5 minutes, and I'm genuinely better informed. This is the product I didn't know I needed.",
-    topics: ["World News", "US Politics", "Business & Tech"],
-  },
-  {
-    name: "James K.",
-    location: "Chicago, IL",
-    rating: 5,
-    date: "Mar 29, 2026",
-    text: "The AI summaries are remarkably neutral. I've tested them against topics I know well and they consistently present multiple angles without editorializing. Rare in today's media landscape.",
-    topics: ["Science", "Climate & Energy"],
-  },
-  {
-    name: "Priya L.",
-    location: "San Francisco, CA",
-    rating: 5,
-    date: "Mar 22, 2026",
-    text: "Finally a news product for busy professionals. I added AI, crypto, and global economy — and every morning I walk into meetings knowing exactly what's relevant. My team has noticed.",
-    topics: ["Artificial Intelligence", "Crypto & Web3", "Global Economy"],
-  },
-  {
-    name: "Marcus T.",
-    location: "Austin, TX",
-    rating: 5,
-    date: "Mar 15, 2026",
-    text: "The podcast version is a game changer. I listen during my commute and arrive at work already caught up. The audio production is clean — feels like a real show, not text-to-speech.",
-    topics: ["Sports", "Entertainment", "Health & Wellness"],
-  },
-  {
-    name: "Rachel H.",
-    location: "Boston, MA",
-    rating: 4,
-    date: "Mar 8, 2026",
-    text: "Very impressed with the personalization. I cover a niche mix — space, law, and international affairs — and the briefs are accurate and well-sourced. One suggestion: add article links for deep dives.",
-    topics: ["Space", "Law & Justice", "International Affairs"],
-  },
-  {
-    name: "David W.",
-    location: "Seattle, WA",
-    rating: 5,
-    date: "Feb 28, 2026",
-    text: "My partner and I both subscribe with different topic sets. She focuses on arts and culture, I'm on markets and politics — and somehow each brief feels genuinely tailored. The personalization is real.",
-    topics: ["Stocks & Markets", "US Politics"],
-  },
-];
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <svg
-          key={i}
-          className={`w-4 h-4 ${i <= rating ? "text-amber-400" : "text-brand-border"}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "blog", label: "Blog" },
@@ -406,10 +333,10 @@ export default function Explore() {
         {/* PAST RUNDOWNS */}
         {tab === "rundowns" && (
           <div>
-            <div className="flex items-start justify-between mb-10">
+            <div className="flex items-start justify-between mb-6">
               <div>
-                <h2 className="font-display text-2xl font-bold text-brand-text mb-1">Recent Editions</h2>
-                <p className="text-brand-muted text-sm">Browse past daily briefings. Each edition was personalized for thousands of readers.</p>
+                <h2 className="font-display text-2xl font-bold text-brand-text mb-1">Sample Editions</h2>
+                <p className="text-brand-muted text-sm">Example briefings showing the format and topics Footnote covers.</p>
               </div>
               <Link
                 href="/catchup"
@@ -420,6 +347,13 @@ export default function Explore() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </Link>
+            </div>
+
+            <div className="mb-6 flex items-start gap-3 p-4 rounded-xl border border-brand-border bg-brand-deeper text-sm text-brand-muted">
+              <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-muted" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+              These are illustrative sample briefings to show what Footnote delivers. Real subscriber editions are personalized per reader and not publicly archived.
             </div>
 
             <div className="space-y-4">
@@ -446,7 +380,6 @@ export default function Explore() {
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="text-xs text-brand-muted mb-1">{run.editions.toLocaleString()} editions sent</div>
                     <span className="text-xs font-medium text-brand-accent opacity-0 group-hover:opacity-100 transition-smooth">
                       View →
                     </span>
@@ -474,14 +407,30 @@ export default function Explore() {
         {/* PODCAST */}
         {tab === "podcast" && (
           <div>
-            {/* Hero episode */}
-            <div className="mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card overflow-hidden relative">
+            {/* Coming soon banner */}
+            <div className="mb-10 flex items-start gap-4 p-5 rounded-2xl border border-amber-200 bg-amber-50">
+              <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-amber-800">Podcast coming soon</p>
+                <p className="text-sm text-amber-700 mt-0.5">
+                  The Footnote audio briefing is in development. Subscribe below to be notified at launch — the episode previews on this page are illustrative only and do not represent real episodes.
+                </p>
+              </div>
+            </div>
+
+            {/* Hero episode preview */}
+            <div className="mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card overflow-hidden relative opacity-60 pointer-events-none select-none">
+              <div className="absolute top-3 right-3 z-10">
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-700">Preview only</span>
+              </div>
               <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
                 style={{ background: "radial-gradient(ellipse, rgba(217,74,10,0.1) 0%, transparent 70%)" }} />
               <div className="relative">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-                  <span className="text-xs font-semibold text-brand-accent uppercase tracking-widest">Latest Episode</span>
+                  <div className="w-2 h-2 rounded-full bg-brand-border" />
+                  <span className="text-xs font-semibold text-brand-muted uppercase tracking-widest">Latest Episode</span>
                 </div>
                 <div className="sm:flex sm:items-start sm:gap-8">
                   <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-200 via-orange-300 to-rose-400 flex items-center justify-center flex-shrink-0 mb-4 sm:mb-0 shadow-md">
@@ -489,48 +438,40 @@ export default function Explore() {
                   </div>
                   <div className="flex-1">
                     <h2 className="font-display text-2xl font-bold text-brand-text mb-2 leading-snug">
-                      Ep. 42 — Markets rattle, AI milestone, and the Mars find
+                      Ep. 1 — What a Footnote audio brief sounds like
                     </h2>
                     <p className="text-brand-muted text-sm leading-relaxed mb-4">
-                      Today&apos;s brief covers the sharp market reaction to tariff news, OpenAI&apos;s new model release, and NASA&apos;s remarkable Mars discovery — all in under 7 minutes.
+                      Each episode will cover your selected topics in under 7 minutes — the same personalized brief as the email, in audio form.
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-brand-muted">
-                      <span>Apr 5, 2026</span>
-                      <span className="text-brand-border">·</span>
-                      <span>6 min 48 sec</span>
-                    </div>
                   </div>
                 </div>
-
-                {/* Waveform / play button placeholder */}
                 <div className="mt-6 flex items-center gap-4">
-                  <button className="w-12 h-12 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white flex items-center justify-center transition-smooth glow flex-shrink-0">
-                    <svg className="w-5 h-5 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 rounded-full bg-brand-border flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 translate-x-0.5 text-brand-muted" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
-                  </button>
+                  </div>
                   <div className="flex-1 h-8 flex items-center gap-0.5">
                     {Array.from({ length: 60 }).map((_, i) => (
                       <div
                         key={i}
                         className="flex-1 bg-brand-border rounded-full"
-                        style={{ height: `${Math.sin(i * 0.4) * 50 + 55}%`, opacity: i < 22 ? 1 : 0.4 }}
+                        style={{ height: `${Math.sin(i * 0.4) * 50 + 55}%` }}
                       />
                     ))}
                   </div>
-                  <span className="text-xs text-brand-muted flex-shrink-0">2:34 / 6:48</span>
                 </div>
               </div>
             </div>
 
             {/* Subscribe on platforms */}
-            <h3 className="font-display text-xl font-bold text-brand-text mb-6">Subscribe &amp; Listen</h3>
+            <h3 className="font-display text-xl font-bold text-brand-text mb-2">Subscribe &amp; Listen</h3>
+            <p className="text-sm text-brand-muted mb-6">Links will go live at launch. Subscribe to Footnote to be notified.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
               {PODCAST_PLATFORMS.map((platform) => (
-                <a
+                <div
                   key={platform.name}
-                  href={platform.url}
-                  className={`group flex items-center gap-3 p-4 rounded-xl border transition-smooth ${platform.color}`}
+                  className={`flex items-center gap-3 p-4 rounded-xl border opacity-50 cursor-not-allowed ${platform.color}`}
                 >
                   <div className="flex-shrink-0">{platform.icon}</div>
                   <div className="flex-1 min-w-0">
@@ -539,46 +480,24 @@ export default function Explore() {
                       <div className="text-xs opacity-70">{platform.badge}</div>
                     )}
                   </div>
-                  <svg className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-smooth flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </a>
+                  <span className="text-xs text-brand-muted flex-shrink-0">Soon</span>
+                </div>
               ))}
             </div>
 
-            {/* Recent episodes */}
-            <h3 className="font-display text-xl font-bold text-brand-text mb-6">Recent Episodes</h3>
-            <div className="space-y-3">
-              {[
-                { ep: 42, title: "Markets rattle, AI milestone, and the Mars find", date: "Apr 5", duration: "6:48" },
-                { ep: 41, title: "Climate deal, Fed holds rates, NCAA weekend recap", date: "Apr 4", duration: "7:12" },
-                { ep: 40, title: "OpenAI's new model and what it means for your job", date: "Apr 3", duration: "8:01" },
-                { ep: 39, title: "Middle East tensions, housing data, March Madness", date: "Apr 2", duration: "6:33" },
-                { ep: 38, title: "A deep dive into the week's biggest science stories", date: "Mar 31", duration: "9:14" },
-              ].map((ep) => (
-                <div
-                  key={ep.ep}
-                  className="group flex items-center gap-4 p-4 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-deeper hover:border-brand-accent/30 transition-smooth cursor-pointer"
-                >
-                  <button className="w-9 h-9 rounded-full border border-brand-border group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-white text-brand-muted flex items-center justify-center transition-smooth flex-shrink-0">
-                    <svg className="w-4 h-4 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </button>
-                  <div className="flex-shrink-0 w-10 text-center">
-                    <span className="text-xs font-bold text-brand-muted">Ep.{ep.ep}</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-brand-text leading-snug line-clamp-1 group-hover:text-brand-accent transition-smooth">
-                      {ep.title}
-                    </p>
-                  </div>
-                  <div className="text-right flex-shrink-0 text-xs text-brand-muted">
-                    <div>{ep.date}</div>
-                    <div>{ep.duration}</div>
-                  </div>
-                </div>
-              ))}
+            {/* Notify CTA */}
+            <div className="p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
+              <p className="font-display text-lg font-bold text-brand-text mb-1">Get notified at launch</p>
+              <p className="text-sm text-brand-muted mb-4">Subscribe to Footnote and you&apos;ll be the first to know when audio briefings go live.</p>
+              <Link
+                href="/subscribe"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+              >
+                Subscribe Free
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
           </div>
         )}
@@ -586,92 +505,34 @@ export default function Explore() {
         {/* REVIEWS */}
         {tab === "reviews" && (
           <div>
-            {/* Stats */}
-            <div className="flex flex-col sm:flex-row items-center gap-8 mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card">
-              <div className="text-center">
-                <div className="font-display text-6xl font-bold text-brand-accent leading-none mb-2">4.9</div>
-                <StarRating rating={5} />
-                <div className="text-xs text-brand-muted mt-2">Average rating</div>
-              </div>
-              <div className="w-px bg-brand-border self-stretch hidden sm:block" />
-              <div className="flex-1 space-y-2 w-full sm:w-auto">
-                {[
-                  { stars: 5, pct: 91 },
-                  { stars: 4, pct: 7 },
-                  { stars: 3, pct: 2 },
-                  { stars: 2, pct: 0 },
-                  { stars: 1, pct: 0 },
-                ].map(({ stars, pct }) => (
-                  <div key={stars} className="flex items-center gap-3">
-                    <span className="text-xs text-brand-muted w-4 text-right flex-shrink-0">{stars}</span>
-                    <svg className="w-3 h-3 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <div className="flex-1 h-1.5 rounded-full bg-brand-border overflow-hidden">
-                      <div className="h-full rounded-full bg-amber-400 transition-smooth" style={{ width: `${pct}%` }} />
-                    </div>
-                    <span className="text-xs text-brand-muted w-7 flex-shrink-0">{pct}%</span>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center sm:text-right">
-                <div className="font-display text-3xl font-bold text-brand-text">10,482</div>
-                <div className="text-xs text-brand-muted">total reviews</div>
-                <div className="mt-4">
-                  <Link
-                    href="/subscribe"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-xs transition-smooth"
-                  >
-                    Join them free
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Review cards */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {REVIEWS.map((review, i) => (
-                <div
-                  key={i}
-                  className="p-6 rounded-2xl border border-brand-border bg-brand-card card-warm flex flex-col"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <div className="font-semibold text-brand-text text-sm">{review.name}</div>
-                      <div className="text-xs text-brand-muted">{review.location}</div>
-                    </div>
-                    <div className="text-right">
-                      <StarRating rating={review.rating} />
-                      <div className="text-xs text-brand-muted mt-1">{review.date}</div>
-                    </div>
-                  </div>
-                  <p className="text-sm text-brand-muted leading-relaxed flex-1 mb-4">
-                    &ldquo;{review.text}&rdquo;
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-brand-border">
-                    {review.topics.map((t) => (
-                      <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-brand-deeper border border-brand-border text-brand-muted">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Submit review CTA */}
-            <div className="mt-10 p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
-              <p className="font-display text-lg font-bold text-brand-text mb-1">Love Footnote?</p>
-              <p className="text-sm text-brand-muted mb-4">Share your experience and help other readers find us.</p>
-              <a
-                href="mailto:hello@footnote.news?subject=My Footnote Review"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white font-semibold text-sm transition-smooth"
-              >
-                Write a review
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            {/* Empty state */}
+            <div className="max-w-lg mx-auto text-center py-16">
+              <div className="w-20 h-20 rounded-full bg-brand-deeper border border-brand-border flex items-center justify-center mx-auto mb-6">
+                <svg className="w-9 h-9 text-brand-muted" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
-              </a>
+              </div>
+              <h2 className="font-display text-2xl font-bold text-brand-text mb-3">No reviews yet — be the first</h2>
+              <p className="text-brand-muted leading-relaxed mb-8">
+                Footnote is newly launched. Once you&apos;ve tried it, we&apos;d love to hear what you think. Reviews are published as they come in — only real subscriber feedback appears here.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  href="/subscribe"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+                >
+                  Try Footnote free
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+                <a
+                  href="mailto:hello@footnote.news?subject=My Footnote Review"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-text font-semibold text-sm transition-smooth"
+                >
+                  Submit a review
+                </a>
+              </div>
             </div>
           </div>
         )}
