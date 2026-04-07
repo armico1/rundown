@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Footnote — Your Daily News, Your Way",
+  title: "Papertrail — Your Daily News, Your Way",
   description: "Hyper-personalized daily news briefings. Choose your topics, pick your frequency, read or listen. The essential news every US adult should know, delivered how you want it.",
   openGraph: {
-    title: "Footnote — Your Daily News, Your Way",
+    title: "Papertrail — Your Daily News, Your Way",
     description: "Hyper-personalized daily news briefings you can read or listen to.",
     type: "website",
   },

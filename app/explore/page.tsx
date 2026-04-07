@@ -102,7 +102,7 @@ export default function Explore() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm font-medium text-brand-text transition-smooth">
@@ -131,7 +131,7 @@ export default function Explore() {
             <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Read · Listen · Discover</span>
           </div>
           <h1 className="font-display text-4xl sm:text-6xl font-bold text-brand-text leading-tight mb-4">
-            Explore Footnote
+            Explore Papertrail
           </h1>
           <p className="text-lg text-brand-muted max-w-xl mx-auto leading-relaxed">
             Stories from the team, past editions to catch up on, podcast episodes, and what our readers are saying.
@@ -232,7 +232,7 @@ export default function Explore() {
             <div className="flex items-start justify-between mb-6">
               <div>
                 <h2 className="font-display text-2xl font-bold text-brand-text mb-1">Sample Editions</h2>
-                <p className="text-brand-muted text-sm">Example briefings showing the format and topics Footnote covers.</p>
+                <p className="text-brand-muted text-sm">Example briefings showing the format and topics Papertrail covers.</p>
               </div>
               <Link
                 href="/catchup"
@@ -249,7 +249,7 @@ export default function Explore() {
               <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-muted" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
               </svg>
-              These are illustrative sample briefings to show what Footnote delivers. Real subscriber editions are personalized per reader and not publicly archived.
+              These are illustrative sample briefings to show what Papertrail delivers. Real subscriber editions are personalized per reader and not publicly archived.
             </div>
 
             <div className="space-y-4">
@@ -312,7 +312,7 @@ export default function Explore() {
               <div>
                 <p className="text-sm font-semibold text-amber-800">Podcast coming soon</p>
                 <p className="text-sm text-amber-700 mt-0.5">
-                  The Footnote audio briefing is in development. Subscribe below to be notified at launch — the episode previews on this page are illustrative only and do not represent real episodes.
+                  The Papertrail audio briefing is in development. Subscribe below to be notified at launch — the episode previews on this page are illustrative only and do not represent real episodes.
                 </p>
               </div>
             </div>
@@ -335,7 +335,7 @@ export default function Explore() {
                   </div>
                   <div className="flex-1">
                     <h2 className="font-display text-2xl font-bold text-brand-text mb-2 leading-snug">
-                      Ep. 1 — What a Footnote audio brief sounds like
+                      Ep. 1 — What a Papertrail audio brief sounds like
                     </h2>
                     <p className="text-brand-muted text-sm leading-relaxed mb-4">
                       Each episode will cover your selected topics in under 7 minutes — the same personalized brief as the email, in audio form.
@@ -363,7 +363,7 @@ export default function Explore() {
 
             {/* Subscribe on platforms */}
             <h3 className="font-display text-xl font-bold text-brand-text mb-2">Subscribe &amp; Listen</h3>
-            <p className="text-sm text-brand-muted mb-6">Links will go live at launch. Subscribe to Footnote to be notified.</p>
+            <p className="text-sm text-brand-muted mb-6">Links will go live at launch. Subscribe to Papertrail to be notified.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
               {PODCAST_PLATFORMS.map((platform) => (
                 <div
@@ -385,7 +385,7 @@ export default function Explore() {
             {/* Notify CTA */}
             <div className="p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
               <p className="font-display text-lg font-bold text-brand-text mb-1">Get notified at launch</p>
-              <p className="text-sm text-brand-muted mb-4">Subscribe to Footnote and you&apos;ll be the first to know when audio briefings go live.</p>
+              <p className="text-sm text-brand-muted mb-4">Subscribe to Papertrail and you&apos;ll be the first to know when audio briefings go live.</p>
               <Link
                 href="/subscribe"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
@@ -411,20 +411,20 @@ export default function Explore() {
               </div>
               <h2 className="font-display text-2xl font-bold text-brand-text mb-3">No reviews yet — be the first</h2>
               <p className="text-brand-muted leading-relaxed mb-8">
-                Footnote is newly launched. Once you&apos;ve tried it, we&apos;d love to hear what you think. Reviews are published as they come in — only real subscriber feedback appears here.
+                Papertrail is newly launched. Once you&apos;ve tried it, we&apos;d love to hear what you think. Reviews are published as they come in — only real subscriber feedback appears here.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link
                   href="/subscribe"
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
                 >
-                  Try Footnote free
+                  Try Papertrail free
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </Link>
                 <a
-                  href="mailto:hello@footnote.news?subject=My Footnote Review"
+                  href="mailto:hello@papertrail.news?subject=My Papertrail Review"
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-text font-semibold text-sm transition-smooth"
                 >
                   Submit a review
@@ -440,7 +440,7 @@ export default function Explore() {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-brand-text">
-              foot<span className="text-brand-accent">note</span>
+              paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>
             <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>

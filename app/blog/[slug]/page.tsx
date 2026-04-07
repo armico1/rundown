@@ -101,7 +101,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
@@ -157,7 +157,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
             <div className="flex items-center gap-3 mt-8 pt-8 border-t border-brand-border">
               <div className="w-9 h-9 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-accent font-bold text-xs">fn</span>
+                <span className="text-brand-accent font-bold text-xs">pt</span>
               </div>
               <div>
                 <div className="text-sm font-semibold text-brand-text">{post.author}</div>
@@ -208,7 +208,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 Enjoyed this? Get the daily brief.
               </div>
               <p className="text-sm text-brand-muted mb-6 max-w-sm mx-auto leading-relaxed">
-                Footnote delivers a 5-minute personalized news briefing every morning. Free, forever.
+                Papertrail delivers a 5-minute personalized news briefing every morning. Free, forever.
               </p>
               <Link
                 href="/subscribe"
@@ -270,7 +270,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-brand-text">
-              foot<span className="text-brand-accent">note</span>
+              paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>
             <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>

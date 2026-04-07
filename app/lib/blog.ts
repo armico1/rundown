@@ -21,13 +21,13 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    id: "why-we-built-footnote",
-    slug: "why-we-built-footnote",
+    id: "why-we-built-papertrail",
+    slug: "why-we-built-papertrail",
     category: "Behind the Product",
-    title: "Why we built Footnote: the media diet problem",
+    title: "Why we built Papertrail: the media diet problem",
     excerpt:
-      "Most people want to stay informed. The problem isn't motivation — it's the firehose. We built Footnote because we were drowning too.",
-    author: "The Footnote Team",
+      "Most people want to stay informed. The problem isn't motivation — it's the firehose. We built Papertrail because we were drowning too.",
+    author: "The Papertrail Team",
     date: "Mar 28, 2026",
     readTime: "4 min read",
     featured: true,
@@ -55,7 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "We weren't building a news product. We were building an antidote to how news had started to feel.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
@@ -75,7 +75,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "heading",
-        text: "The insight that became Footnote",
+        text: "The insight that became Papertrail",
       },
       {
         type: "paragraph",
@@ -83,7 +83,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "That's what Footnote is. You tell us your topics once. We build a briefing around those topics every morning. You spend five minutes reading or seven minutes listening. You're done, and you're genuinely caught up on the things that matter to your life and work.",
+        text: "That's what Papertrail is. You tell us your topics once. We build a briefing around those topics every morning. You spend five minutes reading or seven minutes listening. You're done, and you're genuinely caught up on the things that matter to your life and work.",
       },
       {
         type: "list",
@@ -100,7 +100,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "We made a deliberate choice to keep Footnote free. Not freemium, not free for 30 days — free. Staying informed is not a luxury. The ability to understand what's happening in the world shouldn't depend on what you can afford to pay for it.",
+        text: "We made a deliberate choice to keep Papertrail free. Not freemium, not free for 30 days — free. Staying informed is not a luxury. The ability to understand what's happening in the world shouldn't depend on what you can afford to pay for it.",
       },
       {
         type: "paragraph",
@@ -108,7 +108,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "For now: if you've ever felt like staying informed was exhausting, that's not a personal failing. The system was designed to be exhausting. We built Footnote to be the opposite of that.",
+        text: "For now: if you've ever felt like staying informed was exhausting, that's not a personal failing. The system was designed to be exhausting. We built Papertrail to be the opposite of that.",
       },
     ],
   },
@@ -118,15 +118,15 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Tips & Tricks",
     title: "How to pick the right topics for your morning brief",
     excerpt:
-      "Start narrow, not wide. The readers who get the most value from Footnote pick 3–5 topics they genuinely care about, not 15.",
-    author: "The Footnote Team",
+      "Start narrow, not wide. The readers who get the most value from Papertrail pick 3–5 topics they genuinely care about, not 15.",
+    author: "The Papertrail Team",
     date: "Mar 21, 2026",
     readTime: "3 min read",
     featured: false,
     body: [
       {
         type: "paragraph",
-        text: "When people first subscribe to Footnote, we notice two types of behavior. Some pick 3 or 4 topics and never look back. Others select 12, 14, sometimes all 25 — and then quietly stop opening their briefs within two weeks.",
+        text: "When people first subscribe to Papertrail, we notice two types of behavior. Some pick 3 or 4 topics and never look back. Others select 12, 14, sometimes all 25 — and then quietly stop opening their briefs within two weeks.",
       },
       {
         type: "paragraph",
@@ -159,7 +159,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "The best brief is one you look forward to, not one that covers everything you think you should know.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
@@ -176,7 +176,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "The answers to those questions are your real topics. Start there. You can always add more later — Footnote lets you change your topics anytime.",
+        text: "The answers to those questions are your real topics. Start there. You can always add more later — Papertrail lets you change your topics anytime.",
       },
       {
         type: "heading",
@@ -199,7 +199,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "The science behind the 5-minute news brief",
     excerpt:
       "Cognitive load research suggests your brain absorbs structured summaries better than long-form articles when the goal is retention. Here's how we designed for that.",
-    author: "The Footnote Team",
+    author: "The Papertrail Team",
     date: "Mar 14, 2026",
     readTime: "5 min read",
     featured: false,
@@ -243,15 +243,15 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "The goal of news consumption for most people isn't expertise. It's orientation — a working map of what's happening. Short, structured, daily exposure is the most effective way to build and maintain that map.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
-        text: "The structure of every Footnote brief",
+        text: "The structure of every Papertrail brief",
       },
       {
         type: "paragraph",
-        text: "We designed Footnote's briefing format specifically around these principles. Every brief follows the same structure, which matters more than most people realize: when readers know what to expect, comprehension improves because they spend less cognitive energy navigating format and more processing content.",
+        text: "We designed Papertrail's briefing format specifically around these principles. Every brief follows the same structure, which matters more than most people realize: when readers know what to expect, comprehension improves because they spend less cognitive energy navigating format and more processing content.",
       },
       {
         type: "list",
@@ -276,7 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Footnote is designed for a specific use case: staying oriented on a broad range of topics without spending an hour every morning to do it. For topics that draw you in and demand more, the brief should be the starting point, not the destination. We're working on ways to surface deeper reading for the stories that earn it.",
+        text: "Papertrail is designed for a specific use case: staying oriented on a broad range of topics without spending an hour every morning to do it. For topics that draw you in and demand more, the brief should be the starting point, not the destination. We're working on ways to surface deeper reading for the stories that earn it.",
       },
     ],
   },
@@ -287,7 +287,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Our approach to summarization without the spin",
     excerpt:
       "AI summarization can amplify bias just as easily as reduce it. Here's the methodology we developed to keep our briefings as neutral as possible.",
-    author: "The Footnote Team",
+    author: "The Papertrail Team",
     date: "Mar 7, 2026",
     readTime: "6 min read",
     featured: false,
@@ -310,7 +310,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "We don't use single-source summarization for any story in your Footnote brief.",
+        text: "We don't use single-source summarization for any story in your Papertrail brief.",
       },
       {
         type: "heading",
@@ -339,7 +339,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "A good summary doesn't tell you what to think about a story. It tells you what happened, who says so, and what they say it means — clearly distinguishing between facts and interpretations.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
@@ -382,7 +382,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Building a healthier relationship with the news",
     excerpt:
       "Doomscrolling is a real phenomenon with measurable mental health effects. How one intentional daily brief can help break the cycle.",
-    author: "The Footnote Team",
+    author: "The Papertrail Team",
     date: "Feb 28, 2026",
     readTime: "4 min read",
     featured: false,
@@ -422,7 +422,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "The goal isn't to be uninformed. It's to be informed without being consumed by the process of becoming informed.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
@@ -440,15 +440,15 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "heading",
-        text: "Where Footnote fits",
+        text: "Where Papertrail fits",
       },
       {
         type: "paragraph",
-        text: "Footnote is designed to be your one news interaction of the day, not a supplement to the existing fire hose. If you're using it well, you read or listen in the morning, feel genuinely informed on the things that matter to you, and don't feel compelled to check anything else.",
+        text: "Papertrail is designed to be your one news interaction of the day, not a supplement to the existing fire hose. If you're using it well, you read or listen in the morning, feel genuinely informed on the things that matter to you, and don't feel compelled to check anything else.",
       },
       {
         type: "paragraph",
-        text: "That's an ambitious goal, and we know it depends on Footnote being good enough to deserve that trust. We take it seriously. The brief should leave you feeling oriented and ready to engage with your day — not anxious, not overwhelmed, not hooked.",
+        text: "That's an ambitious goal, and we know it depends on Papertrail being good enough to deserve that trust. We take it seriously. The brief should leave you feeling oriented and ready to engage with your day — not anxious, not overwhelmed, not hooked.",
       },
     ],
   },
@@ -458,8 +458,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Community",
     title: "Why we want to change how you consume the news",
     excerpt:
-      "The news isn't broken — the delivery model is. We started Footnote to prove that staying informed shouldn't feel like a second job.",
-    author: "The Footnote Team",
+      "The news isn't broken — the delivery model is. We started Papertrail to prove that staying informed shouldn't feel like a second job.",
+    author: "The Papertrail Team",
     date: "Feb 21, 2026",
     readTime: "3 min read",
     featured: false,
@@ -499,7 +499,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "quote",
         text: "Great journalism deserves to be understood, not merely encountered.",
-        attribution: "The Footnote Team",
+        attribution: "The Papertrail Team",
       },
       {
         type: "heading",
@@ -507,7 +507,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Footnote is a bet that a delivery model can be built around the reader's interests rather than around engagement metrics. The brief is short not because we're cutting corners, but because five minutes is genuinely enough to stay well-informed when the curation is excellent and the format is designed for comprehension. It arrives once a day not because we're lazy, but because once a day is how often you need it.",
+        text: "Papertrail is a bet that a delivery model can be built around the reader's interests rather than around engagement metrics. The brief is short not because we're cutting corners, but because five minutes is genuinely enough to stay well-informed when the curation is excellent and the format is designed for comprehension. It arrives once a day not because we're lazy, but because once a day is how often you need it.",
       },
       {
         type: "list",
@@ -528,7 +528,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Our goal is simple: at the end of your Footnote brief, you should feel informed, calm, and done. Not compelled to check something else. Not worried you missed something. Done.",
+        text: "Our goal is simple: at the end of your Papertrail brief, you should feel informed, calm, and done. Not compelled to check something else. Not worried you missed something. Done.",
       },
       {
         type: "paragraph",

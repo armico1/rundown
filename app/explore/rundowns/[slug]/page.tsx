@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const edition = getRundownBySlug(params.slug);
   if (!edition) return {};
   return {
-    title: `${edition.date} — Footnote Sample Edition`,
-    description: `Sample Footnote briefing for ${edition.date}. ${edition.topStory}`,
+    title: `${edition.date} — Papertrail Sample Edition`,
+    description: `Sample Papertrail briefing for ${edition.date}. ${edition.topStory}`,
   };
 }
 
@@ -44,7 +44,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
@@ -88,7 +88,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
             </svg>
             <span>
-              This is a <strong>sample edition</strong> illustrating the Footnote briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
+              This is a <strong>sample edition</strong> illustrating the Papertrail briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
             </span>
           </div>
 
@@ -99,11 +99,11 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
             <div className="px-7 pt-6 pb-5 border-b border-brand-border bg-brand-deeper">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
-                  <span className="text-brand-accent font-bold text-sm">fn</span>
+                  <span className="text-brand-accent font-bold text-sm">pt</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <div className="font-semibold text-brand-text text-sm">Footnote</div>
+                    <div className="font-semibold text-brand-text text-sm">Papertrail</div>
                     <div className="text-xs text-brand-muted">{edition.dayOfWeek}, 8:00 AM</div>
                   </div>
                   <div className="text-xs text-brand-muted">Your personalized morning briefing · {edition.date}</div>
@@ -153,7 +153,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
             <div className="px-7 py-5 border-t border-brand-border bg-brand-deeper">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <p className="text-xs text-brand-muted">
-                  Footnote · Your personalized daily brief
+                  Papertrail · Your personalized daily brief
                 </p>
                 <Link
                   href="/subscribe"
@@ -252,7 +252,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-brand-text">
-              foot<span className="text-brand-accent">note</span>
+              paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>
             <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>

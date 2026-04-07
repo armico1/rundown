@@ -96,7 +96,7 @@ export default function Subscribe() {
           </div>
           <h1 className="font-display text-4xl font-bold text-brand-text mb-3">You&apos;re in. ☀️</h1>
           <p className="text-brand-muted mb-2 leading-relaxed">
-            Welcome to Footnote, {name.split(" ")[0]}. Your first personalized briefing arrives tomorrow morning.
+            Welcome to Papertrail, {name.split(" ")[0]}. Your first personalized briefing arrives tomorrow morning.
           </p>
           <p className="text-sm text-brand-muted mb-8">
             {selectedTopics.length} topics &middot; {FREQUENCIES.find(f => f.id === frequency)?.label} &middot; {FORMATS.find(f => f.id === format)?.label}
@@ -115,7 +115,7 @@ export default function Subscribe() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           {/* Step progress */}
           <div className="flex items-center gap-1.5">

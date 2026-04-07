@@ -80,7 +80,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
@@ -122,7 +122,7 @@ export default function Home() {
           </h1>
 
           <p className="text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed">
-            Footnote delivers a personalized 5-minute news briefing every morning.
+            Papertrail delivers a personalized 5-minute news briefing every morning.
             Pick your topics, choose your frequency, read or listen.
             Just the stories that matter to you.
           </p>
@@ -229,10 +229,10 @@ export default function Home() {
           <div className="rounded-2xl border border-brand-border bg-brand-card p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-brand-border">
               <div className="w-10 h-10 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-accent font-bold text-sm">fn</span>
+                <span className="text-brand-accent font-bold text-sm">pt</span>
               </div>
               <div>
-                <div className="text-brand-text font-semibold text-sm">Footnote</div>
+                <div className="text-brand-text font-semibold text-sm">Papertrail</div>
                 <div className="text-brand-muted text-xs">Your personalized briefing</div>
               </div>
               <div className="ml-auto text-xs text-brand-muted whitespace-nowrap">Today, 8:00 AM</div>
@@ -278,7 +278,7 @@ export default function Home() {
             Start your mornings informed
           </h2>
           <p className="text-brand-muted text-lg mb-8 leading-relaxed">
-            Join Footnote and get the news that matters to you, delivered how you want it. Always free.
+            Join Papertrail and get the news that matters to you, delivered how you want it. Always free.
           </p>
           <Link
             href="/subscribe"
@@ -297,7 +297,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-brand-text">
-              foot<span className="text-brand-accent">note</span>
+              paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>
             <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>
