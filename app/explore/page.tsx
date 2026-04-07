@@ -2,77 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { BLOG_POSTS } from "../lib/blog";
+import { RUNDOWNS } from "../lib/rundowns";
 
 type Tab = "blog" | "rundowns" | "podcast" | "reviews";
-
-const BLOG_POSTS = [
-  {
-    id: "why-we-built-footnote",
-    category: "Behind the Product",
-    title: "Why we built Footnote: the media diet problem",
-    excerpt:
-      "Most people want to stay informed. The problem isn't motivation — it's the firehose. We built Footnote because we were drowning too.",
-    author: "The Footnote Team",
-    date: "Mar 28, 2026",
-    readTime: "4 min read",
-    featured: true,
-  },
-  {
-    id: "picking-topics",
-    category: "Tips & Tricks",
-    title: "How to pick the right topics for your morning brief",
-    excerpt:
-      "Start narrow, not wide. The readers who get the most value from Footnote pick 3–5 topics they genuinely care about, not 15.",
-    author: "The Footnote Team",
-    date: "Mar 21, 2026",
-    readTime: "3 min read",
-    featured: false,
-  },
-  {
-    id: "science-of-5min",
-    category: "Research",
-    title: "The science behind the 5-minute news brief",
-    excerpt:
-      "Cognitive load research shows your brain absorbs short, structured summaries 40% better than long-form articles. Here's how we designed for that.",
-    author: "The Footnote Team",
-    date: "Mar 14, 2026",
-    readTime: "5 min read",
-    featured: false,
-  },
-  {
-    id: "bias-free-ai",
-    category: "Behind the Product",
-    title: "Our approach to summarization without the spin",
-    excerpt:
-      "AI summarization can amplify bias just as easily as reduce it. Here's the methodology we developed to keep our briefings as neutral as possible.",
-    author: "The Footnote Team",
-    date: "Mar 7, 2026",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    id: "healthier-news",
-    category: "Wellness",
-    title: "Building a healthier relationship with the news",
-    excerpt:
-      "Doomscrolling is a real phenomenon with measurable mental health effects. How one intentional daily brief can break the cycle.",
-    author: "The Footnote Team",
-    date: "Feb 28, 2026",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
-    id: "mission",
-    category: "Community",
-    title: "Why we want to change how you consume the news",
-    excerpt:
-      "The news isn't broken — the delivery model is. We started Footnote to prove that staying informed shouldn't feel like a second job.",
-    author: "The Footnote Team",
-    date: "Feb 21, 2026",
-    readTime: "3 min read",
-    featured: false,
-  },
-];
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Behind the Product": "text-violet-700 bg-violet-50 border-violet-200",
@@ -82,44 +15,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   Community: "text-rose-700 bg-rose-50 border-rose-200",
 };
 
-const RUNDOWNS = [
-  {
-    date: "Saturday, April 5, 2026",
-    shortDate: "Apr 5",
-    topStory: "Global markets reacted sharply to new tariff announcements, with the S&P 500 sliding 2.1% in early trading.",
-    topics: ["Stocks & Markets", "Global Economy", "US Politics"],
-  },
-  {
-    date: "Friday, April 4, 2026",
-    shortDate: "Apr 4",
-    topStory: "A landmark climate agreement was signed by 40 nations, committing to net-zero emissions in the energy sector by 2040.",
-    topics: ["Climate & Energy", "International Affairs", "World News"],
-  },
-  {
-    date: "Thursday, April 3, 2026",
-    shortDate: "Apr 3",
-    topStory: "OpenAI unveiled its latest model, claiming significant advances in reasoning and coding benchmarks.",
-    topics: ["Artificial Intelligence", "Business & Tech", "Science"],
-  },
-  {
-    date: "Wednesday, April 2, 2026",
-    shortDate: "Apr 2",
-    topStory: "The Federal Reserve held rates steady, signaling caution amid mixed economic signals from the labor market.",
-    topics: ["Stocks & Markets", "US Economy", "Personal Finance"],
-  },
-  {
-    date: "Tuesday, April 1, 2026",
-    shortDate: "Apr 1",
-    topStory: "A new study found that daily exercise reduces the risk of cognitive decline by 35% in adults over 50.",
-    topics: ["Health & Wellness", "Science", "Research"],
-  },
-  {
-    date: "Monday, March 31, 2026",
-    shortDate: "Mar 31",
-    topStory: "NASA confirmed the discovery of complex organic molecules in a Mars soil sample, reigniting the search for ancient life.",
-    topics: ["Space", "Science", "World News"],
-  },
-];
 
 const PODCAST_PLATFORMS = [
   {
@@ -275,7 +170,7 @@ export default function Explore() {
             {(() => {
               const post = BLOG_POSTS.find((p) => p.featured)!;
               return (
-                <div className="mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card card-warm group cursor-pointer">
+                <Link href={`/blog/${post.slug}`} className="block mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card card-warm group">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-4">
@@ -300,16 +195,17 @@ export default function Explore() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })()}
 
             {/* Grid of posts */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {BLOG_POSTS.filter((p) => !p.featured).map((post) => (
-                <div
-                  key={post.id}
-                  className="group p-6 rounded-2xl border border-brand-border bg-brand-card card-warm cursor-pointer flex flex-col"
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group p-6 rounded-2xl border border-brand-border bg-brand-card card-warm flex flex-col"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${CATEGORY_COLORS[post.category] || "text-brand-muted bg-brand-deeper border-brand-border"}`}>
@@ -324,7 +220,7 @@ export default function Explore() {
                     <span>{post.date}</span>
                     <span>{post.readTime}</span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -357,10 +253,11 @@ export default function Explore() {
             </div>
 
             <div className="space-y-4">
-              {RUNDOWNS.map((run, i) => (
-                <div
-                  key={i}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 p-6 rounded-2xl border border-brand-border bg-brand-card card-warm cursor-pointer"
+              {RUNDOWNS.map((run) => (
+                <Link
+                  key={run.slug}
+                  href={`/explore/rundowns/${run.slug}`}
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 p-6 rounded-2xl border border-brand-border bg-brand-card card-warm"
                 >
                   <div className="flex-shrink-0 text-center sm:w-16">
                     <div className="font-display text-2xl font-bold text-brand-accent leading-none">{run.shortDate.split(" ")[1]}</div>
@@ -384,7 +281,7 @@ export default function Explore() {
                       View →
                     </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 

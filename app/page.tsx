@@ -79,9 +79,9 @@ export default function Home() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
             foot<span className="text-brand-accent">note</span>
-          </div>
+          </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
               Explore
@@ -222,7 +222,7 @@ export default function Home() {
               Here&apos;s what yours looks like
             </h2>
             <p className="text-brand-muted text-lg">
-              A real preview based on today&apos;s news.
+              This is the format and structure you&apos;ll receive each morning.
             </p>
           </div>
 
