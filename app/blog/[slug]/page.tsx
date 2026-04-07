@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = getPostBySlug(params.slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Footnote`,
+    title: `${post.title} — Papertrail`,
     description: post.excerpt,
   };
 }
@@ -100,7 +100,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
             paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
@@ -112,7 +112,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
             >
               Subscribe Free
             </Link>
@@ -167,10 +167,10 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           </header>
 
           {/* Divider */}
-          <div className="horizon-line mb-12" />
+          <div className="horizon-line mb-12" style={{ height: "2px", background: "linear-gradient(90deg, transparent, rgba(189,208,228,0.8) 20%, rgba(189,208,228,1) 50%, rgba(189,208,228,0.8) 80%, transparent)" }} />
 
           {/* Body */}
-          <article className="space-y-5">
+          <article className="space-y-5 ruled-lines px-2 py-4" style={{ background: "rgba(253,252,242,0.6)", borderRadius: "2px" }}>
             {post.body.map((block, i) => renderBlock(block, i))}
           </article>
 
@@ -195,14 +195,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Subscribe CTA */}
-          <div className="mt-12 p-8 rounded-2xl border border-brand-border bg-brand-card relative overflow-hidden">
-            <div
-              className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 80% 60% at 50% 120%, rgba(217,74,10,0.12) 0%, transparent 70%)",
-              }}
-            />
+          <div className="mt-12 p-8 index-card overflow-hidden">
+            <div />
             <div className="relative text-center">
               <div className="font-display text-xl font-bold text-brand-text mb-2">
                 Enjoyed this? Get the daily brief.
@@ -212,7 +206,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </p>
               <Link
                 href="/subscribe"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth glow"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth glow" style={{ borderRadius: "2px" }}
               >
                 Subscribe Free
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -231,7 +225,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                   <Link
                     key={rp.slug}
                     href={`/blog/${rp.slug}`}
-                    className="group flex items-start gap-4 p-5 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-deeper hover:border-brand-accent/30 transition-smooth"
+                    className="group index-card flex items-start gap-4 p-5 pt-10"
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
@@ -269,7 +263,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-brand-text">
+            <span className="font-display text-lg font-bold text-brand-text">
               paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>

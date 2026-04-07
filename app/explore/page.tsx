@@ -101,7 +101,7 @@ export default function Explore() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
             paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
@@ -113,7 +113,7 @@ export default function Explore() {
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
             >
               Subscribe Free
             </Link>
@@ -122,15 +122,12 @@ export default function Explore() {
       </nav>
 
       {/* Page header */}
-      <div className="sunrise-hero relative pt-32 pb-16 px-6 overflow-hidden border-b border-brand-border/60">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px] rounded-full blur-3xl"
-          style={{ background: "radial-gradient(ellipse, rgba(251,191,36,0.18) 0%, rgba(249,115,22,0.1) 40%, transparent 70%)" }} />
-        <div className="horizon-line absolute bottom-0 left-0 right-0" />
+      <div className="ruled-bg relative pt-32 pb-16 px-6 overflow-hidden border-b border-brand-border">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card mb-6 shadow-sm">
-            <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Read · Listen · Discover</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-border bg-brand-card mb-6 shadow-sm font-mono text-xs text-brand-muted uppercase tracking-widest" style={{ borderRadius: "2px" }}>
+            Read · Listen · Discover
           </div>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold text-brand-text leading-tight mb-4">
+          <h1 className="font-display text-5xl sm:text-7xl font-bold text-brand-text leading-tight mb-4">
             Explore Papertrail
           </h1>
           <p className="text-lg text-brand-muted max-w-xl mx-auto leading-relaxed">
@@ -140,18 +137,14 @@ export default function Explore() {
       </div>
 
       {/* Tabs */}
-      <div className="sticky top-[65px] z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border/60">
+      <div className="sticky top-[65px] z-40 bg-brand-deeper border-b border-brand-border">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex gap-0 overflow-x-auto">
+          <div className="flex gap-1 overflow-x-auto pt-3">
             {TABS.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
-                className={`px-5 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-smooth ${
-                  tab === t.id
-                    ? "border-brand-accent text-brand-accent"
-                    : "border-transparent text-brand-muted hover:text-brand-text hover:border-brand-border"
-                }`}
+                className={`notebook-tab ${tab === t.id ? "active" : ""}`}
               >
                 {t.label}
               </button>
@@ -161,7 +154,7 @@ export default function Explore() {
       </div>
 
       {/* Tab content */}
-      <div className="max-w-6xl mx-auto px-6 py-14 pb-24">
+      <div className="max-w-6xl mx-auto px-6 py-12 pb-24 ruled-lines min-h-[60vh]">
 
         {/* BLOG */}
         {tab === "blog" && (
@@ -170,7 +163,7 @@ export default function Explore() {
             {(() => {
               const post = BLOG_POSTS.find((p) => p.featured)!;
               return (
-                <Link href={`/blog/${post.slug}`} className="block mb-12 p-8 rounded-2xl border border-brand-border bg-brand-card card-warm group">
+                <Link href={`/blog/${post.slug}`} className="block mb-12 p-8 pt-12 index-card group">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-4">
@@ -205,7 +198,7 @@ export default function Explore() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group p-6 rounded-2xl border border-brand-border bg-brand-card card-warm flex flex-col"
+                  className="group index-card p-6 pt-10 flex flex-col"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${CATEGORY_COLORS[post.category] || "text-brand-muted bg-brand-deeper border-brand-border"}`}>
@@ -236,7 +229,7 @@ export default function Explore() {
               </div>
               <Link
                 href="/catchup"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth flex-shrink-0"
+                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth flex-shrink-0" style={{ borderRadius: "2px" }}
               >
                 Custom catch-up
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -245,7 +238,7 @@ export default function Explore() {
               </Link>
             </div>
 
-            <div className="mb-6 flex items-start gap-3 p-4 rounded-xl border border-brand-border bg-brand-deeper text-sm text-brand-muted">
+            <div className="mb-6 flex items-start gap-3 p-4 border border-brand-border bg-brand-deeper text-sm text-brand-muted" style={{ borderRadius: "2px" }}>
               <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-muted" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
               </svg>
@@ -257,7 +250,7 @@ export default function Explore() {
                 <Link
                   key={run.slug}
                   href={`/explore/rundowns/${run.slug}`}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 p-6 rounded-2xl border border-brand-border bg-brand-card card-warm"
+                  className="group index-card flex flex-col sm:flex-row sm:items-center gap-4 p-6 pt-10"
                 >
                   <div className="flex-shrink-0 text-center sm:w-16">
                     <div className="font-display text-2xl font-bold text-brand-accent leading-none">{run.shortDate.split(" ")[1]}</div>
@@ -285,12 +278,12 @@ export default function Explore() {
               ))}
             </div>
 
-            <div className="mt-10 p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
+            <div className="mt-10 p-6 index-card text-center">
               <p className="text-brand-muted text-sm mb-1">Want a personalized recap instead?</p>
               <p className="text-xs text-brand-muted mb-4">Tell us your topics and we&apos;ll build a custom catch-up for you.</p>
               <Link
                 href="/catchup"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
               >
                 Catch Me Up
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -383,12 +376,12 @@ export default function Explore() {
             </div>
 
             {/* Notify CTA */}
-            <div className="p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
+            <div className="p-6 index-card text-center">
               <p className="font-display text-lg font-bold text-brand-text mb-1">Get notified at launch</p>
               <p className="text-sm text-brand-muted mb-4">Subscribe to Papertrail and you&apos;ll be the first to know when audio briefings go live.</p>
               <Link
                 href="/subscribe"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
               >
                 Subscribe Free
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -404,7 +397,7 @@ export default function Explore() {
           <div>
             {/* Empty state */}
             <div className="max-w-lg mx-auto text-center py-16">
-              <div className="w-20 h-20 rounded-full bg-brand-deeper border border-brand-border flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-brand-deeper border border-brand-border flex items-center justify-center mx-auto mb-6" style={{ borderRadius: "4px" }}>
                 <svg className="w-9 h-9 text-brand-muted" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
@@ -416,7 +409,7 @@ export default function Explore() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link
                   href="/subscribe"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
                 >
                   Try Papertrail free
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -425,7 +418,7 @@ export default function Explore() {
                 </Link>
                 <a
                   href="mailto:hello@papertrail.news?subject=My Papertrail Review"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-text font-semibold text-sm transition-smooth"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 border border-brand-border text-brand-muted hover:border-brand-accent hover:text-brand-text font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
                 >
                   Submit a review
                 </a>
@@ -439,7 +432,7 @@ export default function Explore() {
       <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-brand-text">
+            <span className="font-display text-lg font-bold text-brand-text">
               paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>

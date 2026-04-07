@@ -114,7 +114,7 @@ export default function Subscribe() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
             paper<span className="text-brand-accent">trail</span>
           </Link>
           {/* Step progress */}
@@ -135,7 +135,7 @@ export default function Subscribe() {
         </div>
       </nav>
 
-      <div className="pt-28 pb-20 px-6">
+      <div className="pt-28 pb-20 px-6 ruled-bg min-h-screen">
         <div className="max-w-xl mx-auto">
 
           {/* Step 1: Name & Email */}
@@ -153,7 +153,7 @@ export default function Subscribe() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ari"
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth"
+                    className="w-full px-4 py-3 border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth font-sans" style={{ borderRadius: "2px" }}
                   />
                 </div>
                 <div>
@@ -163,7 +163,7 @@ export default function Subscribe() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth"
+                    className="w-full px-4 py-3 border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth font-sans" style={{ borderRadius: "2px" }}
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function Subscribe() {
                     <button
                       key={topic.id}
                       onClick={() => toggleTopic(topic.id)}
-                      className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-left transition-smooth ${
+                      className={`flex items-center gap-2.5 px-3.5 py-3 border text-left transition-smooth ${
                         selected
                           ? "chip-selected text-brand-text"
                           : "border-brand-border bg-brand-card text-brand-muted hover:border-brand-accent/40 hover:text-brand-text hover:bg-brand-deeper"
@@ -237,7 +237,7 @@ export default function Subscribe() {
                   <button
                     key={freq.id}
                     onClick={() => setFrequency(freq.id)}
-                    className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-smooth ${
+                    className={`w-full flex items-center justify-between px-5 py-4 border text-left transition-smooth ${
                       frequency === freq.id
                         ? "chip-selected"
                         : "border-brand-border bg-brand-card hover:border-brand-accent/40 hover:bg-brand-deeper"
@@ -274,7 +274,7 @@ export default function Subscribe() {
                   <button
                     key={fmt.id}
                     onClick={() => setFormat(fmt.id)}
-                    className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-smooth ${
+                    className={`w-full flex items-center gap-4 px-5 py-4 border text-left transition-smooth ${
                       format === fmt.id
                         ? "chip-selected"
                         : "border-brand-border bg-brand-card hover:border-brand-accent/40 hover:bg-brand-deeper"
@@ -318,7 +318,7 @@ export default function Subscribe() {
               <button
                 onClick={() => canProceed() && setStep(step + 1)}
                 disabled={!canProceed()}
-                className={`flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-sm transition-smooth ${
+                className={`flex items-center gap-2 px-7 py-3 font-semibold text-sm transition-smooth ${
                   canProceed()
                     ? "bg-brand-accent hover:bg-brand-accentHover text-white"
                     : "bg-brand-border text-brand-muted cursor-not-allowed"
@@ -333,7 +333,7 @@ export default function Subscribe() {
               <button
                 onClick={handleSubmit}
                 disabled={!canProceed() || submitting}
-                className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm transition-smooth ${
+                className={`flex items-center gap-2 px-8 py-3 font-semibold text-sm transition-smooth ${
                   canProceed() && !submitting
                     ? "bg-brand-accent hover:bg-brand-accentHover text-white glow"
                     : "bg-brand-border text-brand-muted cursor-not-allowed"

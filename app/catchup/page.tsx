@@ -88,8 +88,8 @@ export default function CatchUp() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
-            foot<span className="text-brand-accent">note</span>
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
+            paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
@@ -97,7 +97,7 @@ export default function CatchUp() {
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
             >
               Subscribe Free
             </Link>
@@ -105,12 +105,12 @@ export default function CatchUp() {
         </div>
       </nav>
 
-      <div className="pt-28 pb-20 px-6">
+      <div className="pt-28 pb-20 px-6 ruled-bg min-h-screen">
         <div className="max-w-2xl mx-auto">
 
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-border bg-brand-card mb-6 shadow-sm font-mono text-xs" style={{ borderRadius: "2px" }}>
               <svg className="w-4 h-4 text-brand-accent" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
               </svg>
@@ -135,7 +135,7 @@ export default function CatchUp() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 rounded-xl border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth"
+                  className="w-full px-4 py-3 border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth font-sans" style={{ borderRadius: "2px" }}
                 />
                 <p className="text-xs text-brand-muted mt-1.5">We&apos;ll also send the recap to your inbox.</p>
               </div>
@@ -155,7 +155,7 @@ export default function CatchUp() {
                       <button
                         key={topic.id}
                         onClick={() => toggleTopic(topic.id)}
-                        className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl border text-left transition-smooth ${
+                        className={`flex items-center gap-2.5 px-3.5 py-3 border text-left transition-smooth ${
                           selected
                             ? "chip-selected text-brand-text"
                             : "border-brand-border bg-brand-card text-brand-muted hover:border-brand-accent/40 hover:text-brand-text hover:bg-brand-deeper"
@@ -182,7 +182,7 @@ export default function CatchUp() {
                     <button
                       key={tf.id}
                       onClick={() => setTimeframe(tf.id)}
-                      className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-smooth ${
+                      className={`w-full flex items-center justify-between px-5 py-4 border text-left transition-smooth ${
                         timeframe === tf.id
                           ? "chip-selected"
                           : "border-brand-border bg-brand-card hover:border-brand-accent/40 hover:bg-brand-deeper"
@@ -215,7 +215,7 @@ export default function CatchUp() {
                 <button
                   onClick={handleCatchUp}
                   disabled={!canSubmit || loading}
-                  className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm transition-smooth ${
+                  className={`flex items-center gap-2 px-8 py-3 font-semibold text-sm transition-smooth ${
                     canSubmit && !loading
                       ? "bg-brand-accent hover:bg-brand-accentHover text-white glow"
                       : "bg-brand-border text-brand-muted cursor-not-allowed"
@@ -263,7 +263,7 @@ export default function CatchUp() {
                   {stories.map((story, i) => (
                     <div
                       key={i}
-                      className="p-5 rounded-2xl border border-brand-border bg-brand-card card-warm"
+                      className="p-5 index-card pt-9"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-xs font-semibold text-brand-accent uppercase tracking-wider">
@@ -283,13 +283,13 @@ export default function CatchUp() {
                 </div>
               )}
 
-              <div className="mt-10 p-6 rounded-2xl border border-brand-border bg-brand-deeper text-center">
+              <div className="mt-10 p-6 index-card text-center">
                 <p className="text-brand-muted text-sm mb-3">
                   Want this delivered to your inbox automatically?
                 </p>
                 <Link
                   href="/subscribe"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
                 >
                   Subscribe Free
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

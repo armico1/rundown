@@ -2,146 +2,206 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FFF8F0;
-  color: #1C1108;
+  background-color: #F2EDDB;
+  color: #1A1714;
 }
 
 ::selection {
-  background-color: rgba(217, 74, 10, 0.18);
-  color: #1C1108;
+  background-color: rgba(27, 85, 176, 0.18);
+  color: #1A1714;
 }
 
-/* Warm coral glow */
-.glow {
-  box-shadow: 0 4px 28px rgba(217, 74, 10, 0.22), 0 1px 6px rgba(217, 74, 10, 0.1);
+/* ── Ruled notebook background ─────────────────────────────── */
+.ruled-bg {
+  background-color: #F2EDDB;
+  background-image:
+    linear-gradient(to right, transparent 66px, rgba(232, 136, 136, 0.55) 66px, rgba(232, 136, 136, 0.55) 68px, transparent 68px),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 27px,
+      rgba(189, 208, 228, 0.65) 27px,
+      rgba(189, 208, 228, 0.65) 28px
+    );
 }
 
-.glow-text {
-  text-shadow: 0 0 40px rgba(245, 158, 11, 0.45);
+/* Ruled lines only (no margin) for content sections */
+.ruled-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 27px,
+    rgba(189, 208, 228, 0.5) 27px,
+    rgba(189, 208, 228, 0.5) 28px
+  );
 }
 
-/* Sunrise gradient border */
-.gradient-border {
+/* ── Index card ─────────────────────────────────────────────── */
+.index-card {
+  background: #FDFCF2;
+  border: 1px solid #D0C9A4;
+  border-radius: 3px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.09), 0 1px 3px rgba(0, 0, 0, 0.05);
   position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.gradient-border::before {
+.index-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #D94A0A, #F59E0B, #DB2777, #D94A0A);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: rgba(189, 208, 228, 0.22);
+  border-bottom: 1px solid rgba(189, 208, 228, 0.5);
+  border-radius: 3px 3px 0 0;
+  pointer-events: none;
+}
+.index-card:hover {
+  transform: translateY(-3px) rotate(0.4deg);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.13);
 }
 
-/* Topic chip selected */
+/* Index card without the header stripe */
+.card-notebook {
+  background: #FDFCF2;
+  border: 1px solid #D0C9A4;
+  border-radius: 3px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-notebook:hover {
+  background: #FAF8EC;
+  border-color: #1B55B0;
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 18px rgba(27, 85, 176, 0.1);
+}
+
+/* ── Chip selected (topic picker) ───────────────────────────── */
 .chip-selected {
-  background: linear-gradient(135deg, rgba(217, 74, 10, 0.1), rgba(245, 158, 11, 0.1));
-  border-color: #D94A0A !important;
-  box-shadow: 0 0 0 1px rgba(217, 74, 10, 0.25), 0 2px 14px rgba(217, 74, 10, 0.08);
+  background: rgba(27, 85, 176, 0.1) !important;
+  border-color: #1B55B0 !important;
+  box-shadow: 0 0 0 1px rgba(27, 85, 176, 0.25), 0 2px 8px rgba(27, 85, 176, 0.08);
 }
 
-/* Smooth transitions */
+/* ── Glow (ink blue) ─────────────────────────────────────────── */
+.glow {
+  box-shadow: 0 4px 24px rgba(27, 85, 176, 0.28), 0 1px 6px rgba(27, 85, 176, 0.12);
+}
+
+/* ── Smooth transitions ──────────────────────────────────────── */
 .transition-smooth {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Warm card hover */
-.card-warm {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-warm:hover {
-  background: #FEF0E4;
-  border-color: #D4A78A;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(217, 74, 10, 0.07);
-}
-
-/* Animated sunrise gradient for text */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animated-gradient {
-  background: linear-gradient(135deg, #D94A0A, #F59E0B, #DB2777, #F97316, #D94A0A);
-  background-size: 300% 300%;
-  animation: gradientShift 7s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hero sunrise atmosphere */
-.sunrise-hero {
-  background:
-    radial-gradient(ellipse 150% 65% at 50% 115%, rgba(251, 191, 36, 0.28) 0%, transparent 52%),
-    radial-gradient(ellipse 90% 55% at 18% 115%, rgba(249, 115, 22, 0.2) 0%, transparent 48%),
-    radial-gradient(ellipse 90% 55% at 82% 115%, rgba(219, 39, 119, 0.15) 0%, transparent 48%),
-    radial-gradient(ellipse 70% 45% at 50% 115%, rgba(109, 40, 217, 0.1) 0%, transparent 52%);
-}
-
-/* Decorative horizon line */
+/* ── Margin separator (decorative) ──────────────────────────── */
 .horizon-line {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(217, 74, 10, 0.35) 20%,
-    rgba(245, 158, 11, 0.5) 50%,
-    rgba(217, 74, 10, 0.35) 80%,
+    rgba(189, 208, 228, 0.6) 20%,
+    rgba(189, 208, 228, 0.9) 50%,
+    rgba(189, 208, 228, 0.6) 80%,
     transparent 100%
   );
 }
 
-/* Sun burst decoration */
-.sun-ring {
-  background: conic-gradient(
-    from 0deg,
-    rgba(251, 191, 36, 0.0) 0deg,
-    rgba(251, 191, 36, 0.15) 30deg,
-    rgba(249, 115, 22, 0.1) 60deg,
-    rgba(251, 191, 36, 0.0) 90deg,
-    rgba(219, 39, 119, 0.08) 120deg,
-    rgba(251, 191, 36, 0.0) 180deg,
-    rgba(249, 115, 22, 0.12) 240deg,
-    rgba(251, 191, 36, 0.0) 360deg
-  );
+/* Red margin line (vertical accent) */
+.margin-accent {
+  border-left: 2px solid rgba(232, 136, 136, 0.7);
 }
 
-/* Noise texture */
+/* ── Handwritten underline for headlines ────────────────────── */
+.ink-underline {
+  position: relative;
+  display: inline-block;
+}
+.ink-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #1B55B0;
+  border-radius: 2px;
+  transform: rotate(-0.5deg);
+  opacity: 0.7;
+}
+
+/* ── Notebook spiral decoration ─────────────────────────────── */
+.spiral-top {
+  position: relative;
+}
+.spiral-top::before {
+  content: '○ ○ ○ ○ ○ ○ ○ ○ ○ ○';
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  letter-spacing: 12px;
+  font-size: 10px;
+  color: rgba(106, 96, 80, 0.4);
+  pointer-events: none;
+}
+
+/* ── Paper texture overlay ───────────────────────────────────── */
 .noise::after {
   content: '';
   position: fixed;
   inset: 0;
-  opacity: 0.025;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 100;
 }
 
-/* Scrollbar */
+/* ── Tab styles for explore page ────────────────────────────── */
+.notebook-tab {
+  position: relative;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6B6050;
+  background: #E9E3CA;
+  border: 1px solid #D0C9A4;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  top: 1px;
+}
+.notebook-tab:hover {
+  color: #1A1714;
+  background: #F2EDDB;
+}
+.notebook-tab.active {
+  color: #1A1714;
+  background: #FDFCF2;
+  border-color: #D0C9A4;
+  z-index: 1;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF8F0;
+  background: #F2EDDB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E8D0B8;
+  background: #D0C9A4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D94A0A;
+  background: #1B55B0;
 }

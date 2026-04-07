@@ -43,7 +43,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
             paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
@@ -55,7 +55,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
             >
               Subscribe Free
             </Link>
@@ -93,7 +93,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Email-style briefing container */}
-          <div className="rounded-2xl border border-brand-border bg-brand-card shadow-sm overflow-hidden">
+          <div className="index-card overflow-hidden">
 
             {/* Email header chrome */}
             <div className="px-7 pt-6 pb-5 border-b border-brand-border bg-brand-deeper">
@@ -119,7 +119,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
             </div>
 
             {/* Briefing content */}
-            <div className="px-7 py-8 space-y-8">
+            <div className="px-7 py-8 space-y-8 ruled-lines">
               {edition.sections.map((section, i) => (
                 <div key={i}>
                   {/* Section label */}
@@ -203,14 +203,8 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Subscribe CTA */}
-          <div className="mt-10 p-8 rounded-2xl border border-brand-border bg-brand-card text-center relative overflow-hidden">
-            <div
-              className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 80% 60% at 50% 120%, rgba(217,74,10,0.12) 0%, transparent 70%)",
-              }}
-            />
+          <div className="mt-10 p-8 index-card text-center overflow-hidden">
+            <div />
             <div className="relative">
               <p className="font-display text-xl font-bold text-brand-text mb-2">
                 Want this in your inbox every morning?
@@ -220,7 +214,8 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
               </p>
               <Link
                 href="/subscribe"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth glow"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth glow"
+                style={{ borderRadius: "2px" }}
               >
                 Subscribe Free
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -251,7 +246,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
       <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-brand-text">
+            <span className="font-display text-lg font-bold text-brand-text">
               paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>

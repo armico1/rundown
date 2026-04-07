@@ -34,7 +34,7 @@ const TOPICS = [
 const FEATURES = [
   {
     title: "Pick Your Topics",
-    description: "Choose from 25 categories or add your own custom interests. Get only what matters to you.",
+    description: "Choose from 25 categories or add your own. Get only what matters to you.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
@@ -44,7 +44,7 @@ const FEATURES = [
   },
   {
     title: "Choose Your Frequency",
-    description: "Every day, every other day, 3x a week, or weekly. Your schedule, your pace.",
+    description: "Every day, every other day, 3× a week, or weekly. Your schedule, your pace.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
@@ -53,7 +53,7 @@ const FEATURES = [
   },
   {
     title: "Read or Listen",
-    description: "Get your briefing as a quick email, a podcast episode, or both. Your format, your choice.",
+    description: "Get your briefing as a quick email, a podcast episode, or both.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
@@ -62,7 +62,7 @@ const FEATURES = [
   },
   {
     title: "Catch Me Up",
-    description: "Missed a few days? One tap gives you the biggest stories you missed, personalized to your interests.",
+    description: "Missed a few days? One tap gives you the biggest stories you missed.",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -77,21 +77,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-brand-dark">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-dark/92 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-brand-text tracking-tight">
+          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
             paper<span className="text-brand-accent">trail</span>
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">
               Explore
             </Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">
               Catch Me Up
             </Link>
             <Link
               href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
+              className="text-sm font-semibold px-5 py-2 rounded-sm bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth"
             >
               Subscribe Free
             </Link>
@@ -100,28 +100,23 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="sunrise-hero relative pt-36 pb-28 px-6 overflow-hidden">
-        {/* Sunrise atmosphere orbs */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[380px] rounded-full blur-3xl"
-          style={{ background: "radial-gradient(ellipse, rgba(251,191,36,0.22) 0%, rgba(249,115,22,0.12) 40%, transparent 70%)" }} />
-        <div className="absolute bottom-16 left-1/4 w-80 h-80 bg-orange-300/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-16 right-1/4 w-80 h-80 bg-rose-300/12 rounded-full blur-3xl" />
-        <div className="horizon-line absolute bottom-0 left-0 right-0" />
-
+      <section className="ruled-bg relative pt-36 pb-28 px-6 overflow-hidden border-b border-brand-border">
         <div className="relative max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-card mb-8 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-brand-border bg-brand-card shadow-sm"
+            style={{ borderRadius: "2px" }}>
             <div className="w-2 h-2 rounded-full bg-brand-success animate-pulse" />
-            <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Free daily briefings</span>
+            <span className="text-xs font-mono text-brand-muted uppercase tracking-widest">Free daily briefings</span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-5xl sm:text-[5.5rem] font-bold text-brand-text leading-[1.08] mb-7 tracking-tight">
-            Your daily news,<br />
-            <span className="italic animated-gradient">your way.</span>
+          <h1 className="font-display text-6xl sm:text-8xl font-bold text-brand-text leading-[1.05] mb-7">
+            Your daily news,
+            <br />
+            <span className="text-brand-accent ink-underline">your way.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed">
             Papertrail delivers a personalized 5-minute news briefing every morning.
             Pick your topics, choose your frequency, read or listen.
             Just the stories that matter to you.
@@ -130,36 +125,38 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Link
               href="/subscribe"
-              className="group flex items-center gap-2.5 px-9 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+              className="group flex items-center gap-2.5 px-9 py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+              style={{ borderRadius: "2px" }}
             >
               Get Started Free
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </Link>
-            <span className="text-sm text-brand-muted">No credit card. Unsubscribe anytime.</span>
+            <span className="text-sm text-brand-muted font-sans">No credit card. Unsubscribe anytime.</span>
           </div>
 
-          {/* Topic chips preview */}
-          <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+          {/* Topic index cards preview */}
+          <div className="flex flex-wrap justify-center gap-2.5 max-w-2xl mx-auto">
             {TOPICS.slice(0, 16).map((topic) => (
               <div
                 key={topic.id}
                 onMouseEnter={() => setHoveredTopic(topic.id)}
                 onMouseLeave={() => setHoveredTopic(null)}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border transition-smooth cursor-default ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 transition-smooth cursor-default ${
                   hoveredTopic === topic.id
-                    ? "border-brand-accent bg-brand-accent/10 text-brand-text shadow-sm"
-                    : "border-brand-border bg-brand-card/80 text-brand-muted hover:border-brand-accent/40"
+                    ? "bg-brand-accent/10 border-brand-accent text-brand-text shadow-sm"
+                    : "bg-brand-card border-brand-border text-brand-muted"
                 }`}
+                style={{ border: "1px solid", borderRadius: "2px", boxShadow: hoveredTopic === topic.id ? undefined : "1px 2px 4px rgba(0,0,0,0.06)" }}
               >
                 <span className="text-sm">{topic.icon}</span>
-                <span className="text-sm font-medium">{topic.label}</span>
+                <span className="text-sm font-sans">{topic.label}</span>
               </div>
             ))}
             <Link
               href="/subscribe"
-              className="flex items-center px-3.5 py-2 text-sm font-medium text-brand-accent hover:text-brand-accentHover transition-smooth"
+              className="flex items-center px-3 py-1.5 text-sm font-semibold text-brand-accent hover:text-brand-accentHover transition-smooth"
             >
               +9 more →
             </Link>
@@ -168,28 +165,29 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 px-6 border-t border-brand-border/60">
+      <section className="py-24 px-6 border-b border-brand-border">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand-text mb-4">
               News that fits your life
             </h2>
-            <p className="text-brand-muted text-lg max-w-xl mx-auto">
+            <p className="text-brand-muted text-lg max-w-xl mx-auto font-sans">
               Stop doomscrolling. Start knowing what matters.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {FEATURES.map((feature, i) => (
               <div
                 key={i}
-                className="group p-6 rounded-2xl border border-brand-border bg-brand-card card-warm"
+                className="index-card p-6 pt-10 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4 group-hover:bg-brand-accent/20 transition-smooth">
+                <div className="w-10 h-10 bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-4 group-hover:bg-brand-accent/20 transition-smooth"
+                  style={{ borderRadius: "2px" }}>
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-brand-text mb-2">{feature.title}</h3>
-                <p className="text-sm text-brand-muted leading-relaxed">{feature.description}</p>
+                <h3 className="font-display text-xl font-bold text-brand-text mb-2">{feature.title}</h3>
+                <p className="text-sm text-brand-muted leading-relaxed font-sans">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -197,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 px-6 border-t border-brand-border/60 bg-brand-deeper">
+      <section className="py-20 px-6 border-b border-brand-border bg-brand-deeper ruled-lines">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-8 text-center">
             {[
@@ -206,8 +204,8 @@ export default function Home() {
               ["100%", "Free forever"],
             ].map(([stat, label], i) => (
               <div key={i}>
-                <div className="font-display text-4xl sm:text-5xl font-bold text-brand-accent mb-1">{stat}</div>
-                <div className="text-sm text-brand-muted">{label}</div>
+                <div className="font-display text-5xl sm:text-6xl font-bold text-brand-accent mb-1">{stat}</div>
+                <div className="text-sm text-brand-muted font-sans">{label}</div>
               </div>
             ))}
           </div>
@@ -215,56 +213,60 @@ export default function Home() {
       </section>
 
       {/* Newsletter preview */}
-      <section className="py-24 px-6 border-t border-brand-border/60">
+      <section className="py-24 px-6 border-b border-brand-border">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand-text mb-4">
               Here&apos;s what yours looks like
             </h2>
-            <p className="text-brand-muted text-lg">
+            <p className="text-brand-muted text-lg font-sans">
               This is the format and structure you&apos;ll receive each morning.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-brand-border bg-brand-card p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-6 pb-6 border-b border-brand-border">
-              <div className="w-10 h-10 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-accent font-bold text-sm">pt</span>
+          {/* Index card mockup */}
+          <div className="index-card pt-10 shadow-lg overflow-hidden">
+            <div className="px-8 pb-6 pt-4 border-b border-brand-border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-brand-accent/15 flex items-center justify-center flex-shrink-0"
+                  style={{ borderRadius: "2px" }}>
+                  <span className="text-brand-accent font-display font-bold text-sm">pt</span>
+                </div>
+                <div>
+                  <div className="text-brand-text font-semibold text-sm font-sans">Papertrail</div>
+                  <div className="text-brand-muted text-xs font-sans">Your personalized briefing</div>
+                </div>
+                <div className="ml-auto text-xs text-brand-muted font-mono whitespace-nowrap">Today, 8:00 AM</div>
               </div>
-              <div>
-                <div className="text-brand-text font-semibold text-sm">Papertrail</div>
-                <div className="text-brand-muted text-xs">Your personalized briefing</div>
-              </div>
-              <div className="ml-auto text-xs text-brand-muted whitespace-nowrap">Today, 8:00 AM</div>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-brand-text/80 leading-relaxed">Good morning — here&apos;s what you need to know today.</p>
+            <div className="px-8 py-7 ruled-lines space-y-6">
+              <p className="text-brand-text/80 leading-relaxed font-sans">Good morning — here&apos;s what you need to know today.</p>
 
               <div>
-                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">The Big Story</h3>
-                <p className="text-sm text-brand-muted leading-relaxed">
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2 font-sans">The Big Story</h3>
+                <p className="text-sm text-brand-muted leading-relaxed font-sans">
                   Your top story would appear here, tailored to the topics you selected.
                   150–250 words covering what happened, why it matters, and what&apos;s next.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">Markets Today</h3>
-                <p className="text-sm text-brand-muted leading-relaxed">
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2 font-sans">Markets Today</h3>
+                <p className="text-sm text-brand-muted leading-relaxed font-sans">
                   Key market movements, earnings, economic data — only included if you select Stocks & Markets.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2">In Other News</h3>
-                <p className="text-sm text-brand-muted leading-relaxed">
+                <h3 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-2 font-sans">In Other News</h3>
+                <p className="text-sm text-brand-muted leading-relaxed font-sans">
                   3–4 additional stories matching your chosen topics. Each one: headline, quick summary, why it matters.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-brand-border text-sm text-brand-muted">
-                That&apos;s your morning rundown. See you tomorrow. ☀️
+              <div className="pt-4 border-t border-brand-border text-sm text-brand-muted font-sans">
+                That&apos;s your morning rundown. See you tomorrow. ✏️
               </div>
             </div>
           </div>
@@ -272,17 +274,18 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 border-t border-brand-border/60 bg-brand-deeper">
+      <section className="py-24 px-6 bg-brand-deeper ruled-lines">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-brand-text mb-4">
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand-text mb-4">
             Start your mornings informed
           </h2>
-          <p className="text-brand-muted text-lg mb-8 leading-relaxed">
+          <p className="text-brand-muted text-lg mb-8 leading-relaxed font-sans">
             Join Papertrail and get the news that matters to you, delivered how you want it. Always free.
           </p>
           <Link
             href="/subscribe"
-            className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+            className="inline-flex items-center gap-2.5 px-9 py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-lg transition-smooth glow"
+            style={{ borderRadius: "2px" }}
           >
             Subscribe Free
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -293,19 +296,19 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
+      <footer className="border-t border-brand-border py-12 px-6 bg-brand-dark">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-brand-text">
+            <span className="font-display text-lg font-bold text-brand-text">
               paper<span className="text-brand-accent">trail</span>
             </span>
             <span className="text-brand-border">·</span>
-            <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>
+            <span className="text-sm text-brand-muted font-sans">&copy; 2026. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Explore</Link>
-            <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Subscribe</Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Catch Me Up</Link>
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Explore</Link>
+            <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Subscribe</Link>
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Catch Me Up</Link>
           </div>
         </div>
       </footer>

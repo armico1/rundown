@@ -8,21 +8,24 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#FFF8F0",
-          deeper: "#FEF0E4",
-          card: "#FFFCF8",
-          border: "#E8D0B8",
-          accent: "#D94A0A",
-          accentHover: "#B83D08",
-          accentGlow: "rgba(217, 74, 10, 0.12)",
-          text: "#1C1108",
-          muted: "#7C6A58",
-          success: "#15803D",
+          dark: "#F2EDDB",        // notebook paper
+          deeper: "#E9E3CA",      // slightly darker paper (section bg)
+          card: "#FDFCF2",        // index card off-white
+          border: "#D0C9A4",      // aged paper edge
+          accent: "#1B55B0",      // blue pen ink
+          accentHover: "#144490",
+          accentGlow: "rgba(27, 85, 176, 0.14)",
+          text: "#1A1714",        // near-black ink
+          muted: "#6B6050",       // faded ink
+          success: "#2D6A35",     // green pen
+          line: "#BDD0E4",        // college-ruled line blue
+          margin: "#E88888",      // red margin line
         }
       },
       fontFamily: {
-        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"Lora"', 'Georgia', 'serif'],
+        display: ['"Caveat"', 'cursive'],
+        mono: ['"Courier Prime"', '"Courier New"', 'monospace'],
       },
     },
   },
