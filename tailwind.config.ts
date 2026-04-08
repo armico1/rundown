@@ -24,7 +24,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['"Lora"', 'Georgia', 'serif'],
-        display: ['"Caveat"', 'cursive'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         mono: ['"Courier Prime"', '"Courier New"', 'monospace'],
       },
     },
