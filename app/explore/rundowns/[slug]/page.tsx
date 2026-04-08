@@ -256,6 +256,7 @@ export default function RundownPage({ params }: { params: { slug: string } }) {
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Explore</Link>
             <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Subscribe</Link>
             <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Catch Me Up</Link>
+            <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Preferences</Link>
           </div>
         </div>
       </footer>

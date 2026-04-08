@@ -51,3 +51,12 @@ export async function fetchWithTimeout(
 
 /** Max request body size in bytes (64 KB) */
 export const MAX_BODY_BYTES = 65_536;
+
+/** Validates a boolean (accepts JS boolean or string "true"/"false") */
+export function isValidBoolean(value: unknown): boolean {
+  return value === true || value === false || value === "true" || value === "false";
+}
+
+export function toBoolean(value: unknown): boolean {
+  return value === true || value === "true";
+}

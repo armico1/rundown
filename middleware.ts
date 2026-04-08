@@ -18,6 +18,7 @@ const WINDOW_MS = 60_000; // 1 minute window
 const LIMITS: Record<string, number> = {
   "/api/subscribe": 5,
   "/api/catchup": 10,
+  "/api/preferences": 10,
 };
 
 function getIP(req: NextRequest): string {

@@ -309,6 +309,7 @@ export default function Home() {
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Explore</Link>
             <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Subscribe</Link>
             <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Catch Me Up</Link>
+            <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-smooth font-sans">Preferences</Link>
           </div>
         </div>
       </footer>

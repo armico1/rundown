@@ -32,19 +32,15 @@ export async function POST(request: Request) {
     }
     const body = raw as Record<string, unknown>;
 
-    // ── Sanitize strings ───────────────────────────────────────
-    const name = sanitizeString(body.name, 100);
+    // ── Sanitize & validate ────────────────────────────────────
     const email = sanitizeString(body.email, 320).toLowerCase();
-    const customTopics = sanitizeString(body.customTopics, 500);
+    const topics = body.topics;
     const frequency = sanitizeString(body.frequency, 50);
     const format = sanitizeString(body.format, 20);
-    const topics = body.topics;
+    const customTopics = sanitizeString(body.customTopics, 500);
     const aiPersonalization = toBoolean(body.aiPersonalization);
 
-    // ── Validate ───────────────────────────────────────────────
     const errors: string[] = [];
-
-    if (!name) errors.push("Name is required");
     if (!email || !isValidEmail(email)) errors.push("Valid email is required");
     if (!isValidTopicsArray(topics)) errors.push("At least one valid topic is required");
     if (!ALLOWED_FREQUENCIES.has(frequency)) errors.push("Invalid frequency");
@@ -54,70 +50,57 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: errors[0] }, { status: 400 });
     }
 
-    // Type-narrowed after validation
     const validTopics = topics as string[];
 
-    // ── Forward to Make.com ────────────────────────────────────
-    const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL;
-    if (MAKE_WEBHOOK_URL) {
+    // ── Forward preferences update to Make.com ─────────────────
+    const MAKE_PREFERENCES_WEBHOOK_URL = process.env.MAKE_PREFERENCES_WEBHOOK_URL;
+    if (MAKE_PREFERENCES_WEBHOOK_URL) {
       try {
         await fetchWithTimeout(
-          MAKE_WEBHOOK_URL,
+          MAKE_PREFERENCES_WEBHOOK_URL,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              name,
               email,
               topics: validTopics,
               customTopics,
               frequency,
               format,
               aiPersonalization,
-              subscribedAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
             }),
           },
           8_000
         );
       } catch (err) {
-        // Log but don't block the user — webhook is non-critical path
-        console.error("Make.com webhook error:", err instanceof Error ? err.message : "unknown");
+        console.error("Preferences webhook error:", err instanceof Error ? err.message : "unknown");
       }
     }
 
-    // ── Forward to ConvertKit ──────────────────────────────────
+    // ── Update ConvertKit subscriber fields ────────────────────
     const KIT_API_KEY = process.env.KIT_API_KEY;
-    const KIT_FORM_ID = process.env.KIT_FORM_ID;
-    if (KIT_API_KEY && KIT_FORM_ID) {
+    if (KIT_API_KEY) {
       try {
+        // ConvertKit v3: update subscriber by email via tag/field update
         await fetchWithTimeout(
-          `https://api.convertkit.com/v3/forms/${encodeURIComponent(KIT_FORM_ID)}/subscribe`,
+          `https://api.convertkit.com/v3/subscribers`,
           {
-            method: "POST",
+            method: "GET",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              api_key: KIT_API_KEY,
-              email,
-              first_name: name.split(" ")[0],
-              fields: {
-                topics: validTopics.join(","),
-                frequency,
-                format,
-                ai_personalization: String(aiPersonalization),
-                ...(customTopics ? { custom_topics: customTopics } : {}),
-              },
-            }),
           },
-          8_000
+          5_000
         );
+        // Full subscriber update (PATCH) would go here once you have subscriber ID lookup.
+        // For now the Make.com webhook handles the CRM sync.
       } catch (err) {
-        console.error("ConvertKit error:", err instanceof Error ? err.message : "unknown");
+        console.error("ConvertKit preferences error:", err instanceof Error ? err.message : "unknown");
       }
     }
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Subscribe route error:", err instanceof Error ? err.message : "unknown");
+    console.error("Preferences route error:", err instanceof Error ? err.message : "unknown");
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
