@@ -6,8 +6,9 @@ export async function generateStaticParams() {
   return RUNDOWNS.map((r) => ({ slug: r.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const edition = getRundownBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const edition = getRundownBySlug(slug);
   if (!edition) return {};
   return {
     title: `${edition.date} — Papertrail Sample Edition`,
@@ -30,11 +31,12 @@ function parseInlineMarkdown(text: string): React.ReactNode[] {
   });
 }
 
-export default function RundownPage({ params }: { params: { slug: string } }) {
-  const edition = getRundownBySlug(params.slug);
+export default async function RundownPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const edition = getRundownBySlug(slug);
   if (!edition) notFound();
 
-  const currentIndex = RUNDOWNS.findIndex((r) => r.slug === params.slug);
+  const currentIndex = RUNDOWNS.findIndex((r) => r.slug === slug);
   const prevEdition = currentIndex < RUNDOWNS.length - 1 ? RUNDOWNS[currentIndex + 1] : null;
   const nextEdition = currentIndex > 0 ? RUNDOWNS[currentIndex - 1] : null;
 
