@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KYN — Know Your Niche",
-  description: "KYN delivers a daily brief built around exactly what you follow — specific teams, individual stocks, real names. Not categories. Your niche.",
+  title: "KYN",
+  description: "A five-minute daily brief built around the specific things you follow — not categories, real names.",
   openGraph: {
-    title: "KYN — Know Your Niche",
-    description: "Your obsession, delivered daily. KYN builds a personalized briefing around the exact things you follow.",
+    title: "KYN",
+    description: "Everything you follow. Nothing you don't. A personalized daily brief built around the teams, stocks, and people you actually track.",
     type: "website",
   },
 };

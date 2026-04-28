@@ -37,10 +37,10 @@ export default function Explore() {
           </Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm font-semibold text-brand-text link-underline">Explore</Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Me Up</Link>
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Up</Link>
             <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Preferences</Link>
           </div>
-          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Subscribe Free</Link>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Start free</Link>
         </div>
       </nav>
 
@@ -154,7 +154,7 @@ export default function Explore() {
                 <p className="text-brand-muted text-sm">Example briefings showing the format and topics KYN covers.</p>
               </div>
               <Link href="/catchup" className="hidden sm:flex btn-secondary text-xs py-2.5 px-5 gap-2">
-                Custom catch-up
+                Catch up
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
@@ -205,7 +205,7 @@ export default function Explore() {
               <p className="font-semibold text-brand-text mb-1">Want a personalized recap instead?</p>
               <p className="text-sm text-brand-muted mb-6">Tell us your topics and we&apos;ll build a custom catch-up for you.</p>
               <Link href="/catchup" className="btn-primary text-xs py-3 px-6">
-                Catch Me Up
+                Catch up
               </Link>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function Explore() {
               <p className="font-bold text-brand-text mb-1">Get notified at launch</p>
               <p className="text-sm text-brand-muted mb-6">Subscribe to KYN and you&apos;ll be the first to know when audio briefings go live.</p>
               <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
-                Subscribe Free
+                Start free
               </Link>
             </div>
           </div>
@@ -285,7 +285,7 @@ export default function Explore() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
-            {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
+            {[["Explore","/explore"],["Catch Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
             ))}
           </div>

@@ -50,10 +50,10 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
           </Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Me Up</Link>
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Up</Link>
             <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Preferences</Link>
           </div>
-          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Subscribe Free</Link>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Start free</Link>
         </div>
       </nav>
 
@@ -193,7 +193,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
               Yours will be personalized to your topics, delivered on your schedule. Always free.
             </p>
             <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
-              Subscribe Free
+              Subscribe free
             </Link>
             <p className="mt-3 text-xs text-brand-subtle">No credit card. Unsubscribe anytime.</p>
           </div>
@@ -218,7 +218,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
-            {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
+            {[["Explore","/explore"],["Catch Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
             ))}
           </div>

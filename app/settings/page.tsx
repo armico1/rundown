@@ -80,16 +80,13 @@ export default function Settings() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-base font-extrabold tracking-tight text-brand-text">KYN</span>
-            <span className="hidden sm:block text-xs text-brand-subtle">Know Your Niche</span>
-          </Link>
+          <Link href="/" className="text-base font-extrabold tracking-tight text-brand-text">KYN</Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
             <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Up</Link>
             <Link href="/settings" className="text-sm font-semibold text-brand-text link-underline">Preferences</Link>
           </div>
-          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Get My Rundown</Link>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Start free</Link>
         </div>
       </nav>
 
@@ -316,7 +313,7 @@ export default function Settings() {
 
       <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-extrabold text-white/70">KYN <span className="font-normal text-white/30 text-xs">· Know Your Niche</span></span>
+          <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
             {[["Explore","/explore"],["Catch Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>

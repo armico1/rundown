@@ -56,16 +56,13 @@ export default function CatchUp() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-base font-extrabold tracking-tight text-brand-text">KYN</span>
-            <span className="hidden sm:block text-xs text-brand-subtle">Know Your Niche</span>
-          </Link>
+          <Link href="/" className="text-base font-extrabold tracking-tight text-brand-text">KYN</Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
             <Link href="/catchup" className="text-sm font-semibold text-brand-text link-underline">Catch Up</Link>
             <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Preferences</Link>
           </div>
-          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Get My Rundown</Link>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Start free</Link>
         </div>
       </nav>
 
@@ -74,7 +71,7 @@ export default function CatchUp() {
 
           <div className="mb-12">
             <p className="label mb-4">Instant catch-up</p>
-            <h1 className="text-display-md font-bold text-brand-text mb-4">Catch Me Up</h1>
+            <h1 className="text-display-md font-bold text-brand-text mb-4">Catch Up</h1>
             <p className="text-lg text-brand-muted leading-relaxed">
               Missed a few days? Tell us your niche and how far back to look. We&apos;ll build a personalized recap in seconds.
             </p>
@@ -146,7 +143,7 @@ export default function CatchUp() {
                     </>
                   ) : (
                     <>
-                      Catch Me Up
+                      Catch up
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
@@ -195,7 +192,7 @@ export default function CatchUp() {
               <div className="mt-10 p-8 border border-brand-border rounded-2xl text-center bg-brand-section">
                 <p className="font-semibold text-brand-text mb-2">Get this daily, automatically.</p>
                 <p className="text-sm text-brand-muted mb-6">Subscribe to KYN for a niche brief in your inbox every morning.</p>
-                <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">Get My Rundown</Link>
+                <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">Start free</Link>
               </div>
             </div>
           )}
@@ -204,7 +201,7 @@ export default function CatchUp() {
 
       <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-extrabold text-white/70">KYN <span className="font-normal text-white/30 text-xs">· Know Your Niche</span></span>
+          <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
             {[["Explore","/explore"],["Catch Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>

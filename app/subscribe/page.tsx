@@ -94,7 +94,6 @@ export default function Subscribe() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
-          <p className="label-dark mb-3">Know Your Niche</p>
           <h1 className="text-3xl font-extrabold text-white mb-3 tracking-tight">You&apos;re in.</h1>
           <p className="text-white/60 text-sm leading-relaxed mb-1">
             Welcome, {name.split(" ")[0]}. Your first niche brief arrives tomorrow morning.
@@ -113,10 +112,7 @@ export default function Subscribe() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-brand-border">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-base font-extrabold text-brand-text">KYN</span>
-            <span className="text-xs text-brand-subtle hidden sm:block">Know Your Niche</span>
-          </Link>
+          <Link href="/" className="text-base font-extrabold text-brand-text">KYN</Link>
           <div className="flex items-center gap-1.5">
             {STEPS.map((_, i) => (
               <div
@@ -326,7 +322,7 @@ export default function Subscribe() {
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  {submitting ? "Subscribing…" : aiPersonalization ? "Know My Niche with AI →" : "Know My Niche →"}
+                  {submitting ? "Subscribing…" : "Subscribe free →"}
                 </motion.button>
               )}
             </div>
