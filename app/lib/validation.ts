@@ -1,5 +1,19 @@
 // Shared input validation — single source of truth for all API routes
 
+/** Free-text niche strings — validated for safety, no predefined allowlist */
+export function isValidNichesArray(niches: unknown): niches is string[] {
+  if (!Array.isArray(niches)) return false;
+  if (niches.length === 0 || niches.length > 50) return false;
+  return niches.every(
+    (n) => typeof n === "string" && n.trim().length > 0 && n.length <= 100
+  );
+}
+
+export function sanitizeNiche(n: string): string {
+  return n.replace(/[<>"']/g, "").trim().slice(0, 100);
+}
+
+/** Legacy topic allowlist — kept for any backward-compat reads */
 export const ALLOWED_TOPICS = new Set([
   "world-news", "politics", "stocks", "business-tech", "science",
   "health", "sports", "entertainment", "climate", "ai", "crypto",

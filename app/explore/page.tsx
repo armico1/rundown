@@ -33,7 +33,7 @@ export default function Explore() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
-            papertrail
+            KYN
           </Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm font-semibold text-brand-text link-underline">Explore</Link>
@@ -49,7 +49,7 @@ export default function Explore() {
         <div className="max-w-5xl mx-auto">
           <p className="label mb-4">Read · Listen · Discover</p>
           <h1 className="text-display-md font-bold text-brand-text mb-4">
-            Explore Papertrail
+            Explore KYN
           </h1>
           <p className="text-brand-muted max-w-xl leading-relaxed">
             Stories from the team, past editions to catch up on, podcast episodes, and what our readers are saying.
@@ -151,7 +151,7 @@ export default function Explore() {
             <div className="flex items-start justify-between mb-8">
               <div>
                 <h2 className="text-2xl font-bold text-brand-text mb-1">Sample Editions</h2>
-                <p className="text-brand-muted text-sm">Example briefings showing the format and topics Papertrail covers.</p>
+                <p className="text-brand-muted text-sm">Example briefings showing the format and topics KYN covers.</p>
               </div>
               <Link href="/catchup" className="hidden sm:flex btn-secondary text-xs py-2.5 px-5 gap-2">
                 Custom catch-up
@@ -165,7 +165,7 @@ export default function Explore() {
               <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-subtle" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
               </svg>
-              These are illustrative sample briefings to show what Papertrail delivers. Real subscriber editions are personalized per reader and not publicly archived.
+              These are illustrative sample briefings to show what KYN delivers. Real subscriber editions are personalized per reader and not publicly archived.
             </div>
 
             <div className="space-y-3">
@@ -221,13 +221,13 @@ export default function Explore() {
               <div>
                 <p className="text-sm font-semibold text-brand-text">Podcast coming soon</p>
                 <p className="text-sm text-brand-muted mt-0.5">
-                  The Papertrail audio briefing is in development. Subscribe to be notified at launch. The episode previews below are illustrative only.
+                  The KYN audio briefing is in development. Subscribe to be notified at launch. The episode previews below are illustrative only.
                 </p>
               </div>
             </div>
 
             <h3 className="text-xl font-bold text-brand-text mb-2">Subscribe &amp; Listen</h3>
-            <p className="text-sm text-brand-muted mb-6">Links go live at launch. Subscribe to Papertrail to be notified.</p>
+            <p className="text-sm text-brand-muted mb-6">Links go live at launch. Subscribe to KYN to be notified.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-12">
               {PODCAST_PLATFORMS.map((platform) => (
                 <div
@@ -245,7 +245,7 @@ export default function Explore() {
 
             <div className="p-8 border border-brand-border rounded-2xl text-center bg-brand-section">
               <p className="font-bold text-brand-text mb-1">Get notified at launch</p>
-              <p className="text-sm text-brand-muted mb-6">Subscribe to Papertrail and you&apos;ll be the first to know when audio briefings go live.</p>
+              <p className="text-sm text-brand-muted mb-6">Subscribe to KYN and you&apos;ll be the first to know when audio briefings go live.</p>
               <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
                 Subscribe Free
               </Link>
@@ -263,14 +263,14 @@ export default function Explore() {
             </div>
             <h2 className="text-2xl font-bold text-brand-text mb-3">No reviews yet — be the first</h2>
             <p className="text-brand-muted leading-relaxed mb-8">
-              Papertrail is newly launched. Once you&apos;ve tried it, we&apos;d love to hear what you think. Only real subscriber feedback appears here.
+              KYN is newly launched. Once you&apos;ve tried it, we&apos;d love to hear what you think. Only real subscriber feedback appears here.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
-                Try Papertrail free
+                Try KYN free
               </Link>
               <a
-                href="mailto:hello@papertrail.news?subject=My Papertrail Review"
+                href="mailto:hello@KYN.news?subject=My KYN Review"
                 className="btn-secondary text-xs py-3 px-6"
               >
                 Submit a review
@@ -283,13 +283,13 @@ export default function Explore() {
       {/* Footer */}
       <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-bold text-white/70">papertrail</span>
+          <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
             {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
             ))}
           </div>
-          <span className="text-xs text-white/30 font-mono">&copy; 2026 Papertrail</span>
+          <span className="text-xs text-white/30 font-mono">&copy; 2026 KYN</span>
         </div>
       </footer>
     </div>

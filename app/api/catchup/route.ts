@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import {
   sanitizeString,
+  sanitizeNiche,
   isValidEmail,
-  isValidTopicsArray,
+  isValidNichesArray,
   ALLOWED_DAYS,
-  ALLOWED_TOPICS,
   fetchWithTimeout,
   MAX_BODY_BYTES,
 } from "../../lib/validation";
@@ -13,13 +13,11 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
-    // ── Body size guard ────────────────────────────────────────
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
       return NextResponse.json({ error: "Payload too large" }, { status: 413 });
     }
 
-    // ── Parse ──────────────────────────────────────────────────
     let raw: unknown;
     try {
       raw = await request.json();
@@ -31,14 +29,13 @@ export async function POST(request: Request) {
     }
     const body = raw as Record<string, unknown>;
 
-    // ── Sanitize & validate ────────────────────────────────────
-    const email = sanitizeString(body.email, 320).toLowerCase();
-    const topics = body.topics;
+    const email   = sanitizeString(body.email, 320).toLowerCase();
+    const niches  = body.niches;
     const daysRaw = body.days;
 
     const errors: string[] = [];
-    if (!email || !isValidEmail(email)) errors.push("Valid email is required");
-    if (!isValidTopicsArray(topics)) errors.push("At least one valid topic is required");
+    if (!email || !isValidEmail(email))  errors.push("Valid email is required");
+    if (!isValidNichesArray(niches))     errors.push("At least one niche is required");
 
     const days = typeof daysRaw === "number" ? daysRaw : parseInt(String(daysRaw), 10);
     if (!Number.isFinite(days) || !ALLOWED_DAYS.has(days)) {
@@ -49,9 +46,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: errors[0] }, { status: 400 });
     }
 
-    const validTopics = topics as string[];
+    const validNiches = (niches as string[]).map(sanitizeNiche);
 
-    // ── Forward to Make.com ────────────────────────────────────
     const MAKE_CATCHUP_WEBHOOK_URL = process.env.MAKE_CATCHUP_WEBHOOK_URL;
     if (MAKE_CATCHUP_WEBHOOK_URL) {
       try {
@@ -61,9 +57,7 @@ export async function POST(request: Request) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              email,
-              topics: validTopics,
-              days,
+              email, niches: validNiches, days,
               requestedAt: new Date().toISOString(),
             }),
           },
@@ -79,17 +73,12 @@ export async function POST(request: Request) {
       }
     }
 
-    // ── Fallback placeholder stories ───────────────────────────
-    const topicLabels: Record<string, string> = {};
-    ALLOWED_TOPICS.forEach((id) => {
-      topicLabels[id] = id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-    });
-
-    const placeholderStories = validTopics.slice(0, 5).map((topic, i) => ({
-      headline: `Top ${topicLabels[topic] ?? topic} story from the past ${days} day${days > 1 ? "s" : ""}`,
+    // Fallback placeholder stories
+    const placeholderStories = validNiches.slice(0, 5).map((niche, i) => ({
+      headline: `Top story on "${niche}" from the past ${days} day${days > 1 ? "s" : ""}`,
       summary:
-        "This is a placeholder. Once your Make.com automation is connected, real AI-generated catch-up stories will appear here based on the latest news for your selected topics.",
-      topic,
+        "This is a placeholder. Once your Make.com automation is connected, real AI-generated catch-up stories will appear here based on the latest news for your niches.",
+      niche,
       date: new Date(Date.now() - i * 86_400_000).toLocaleDateString("en-US", {
         weekday: "short",
         month: "short",

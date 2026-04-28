@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const edition = getRundownBySlug(slug);
   if (!edition) return {};
   return {
-    title: `${edition.date} — Papertrail Sample Edition`,
-    description: `Sample Papertrail briefing for ${edition.date}. ${edition.topStory}`,
+    title: `${edition.date} — KYN Sample Edition`,
+    description: `Sample KYN briefing for ${edition.date}. ${edition.topStory}`,
   };
 }
 
@@ -46,7 +46,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
-            papertrail
+            KYN
           </Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
@@ -77,7 +77,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
               <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
             </svg>
             <span>
-              This is a <strong className="text-brand-text">sample edition</strong> illustrating the Papertrail briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
+              This is a <strong className="text-brand-text">sample edition</strong> illustrating the KYN briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
             </span>
           </div>
 
@@ -92,7 +92,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <div className="font-semibold text-brand-text text-sm">Papertrail</div>
+                    <div className="font-semibold text-brand-text text-sm">KYN</div>
                     <div className="text-xs text-brand-subtle">{edition.dayOfWeek}, 8:00 AM</div>
                   </div>
                   <div className="text-xs text-brand-muted">Your personalized morning briefing · {edition.date}</div>
@@ -139,7 +139,7 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
             <div className="px-7 py-5 border-t border-brand-border bg-brand-section">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <p className="text-xs text-brand-muted">
-                  Papertrail · Your personalized daily brief
+                  KYN · Your personalized daily brief
                 </p>
                 <Link
                   href="/subscribe"
@@ -216,13 +216,13 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
       {/* Footer */}
       <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-bold text-white/70">papertrail</span>
+          <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
             {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
             ))}
           </div>
-          <span className="text-xs text-white/30 font-mono">&copy; 2026 Papertrail</span>
+          <span className="text-xs text-white/30 font-mono">&copy; 2026 KYN</span>
         </div>
       </footer>
     </div>

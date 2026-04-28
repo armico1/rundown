@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import {
   sanitizeString,
+  sanitizeNiche,
   isValidEmail,
-  isValidTopicsArray,
+  isValidNichesArray,
   ALLOWED_FREQUENCIES,
   ALLOWED_FORMATS,
   fetchWithTimeout,
@@ -14,13 +15,11 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
-    // ── Body size guard ────────────────────────────────────────
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
       return NextResponse.json({ error: "Payload too large" }, { status: 413 });
     }
 
-    // ── Parse ──────────────────────────────────────────────────
     let raw: unknown;
     try {
       raw = await request.json();
@@ -32,32 +31,26 @@ export async function POST(request: Request) {
     }
     const body = raw as Record<string, unknown>;
 
-    // ── Sanitize strings ───────────────────────────────────────
-    const name = sanitizeString(body.name, 100);
-    const email = sanitizeString(body.email, 320).toLowerCase();
-    const customTopics = sanitizeString(body.customTopics, 500);
+    const name      = sanitizeString(body.name, 100);
+    const email     = sanitizeString(body.email, 320).toLowerCase();
     const frequency = sanitizeString(body.frequency, 50);
-    const format = sanitizeString(body.format, 20);
-    const topics = body.topics;
+    const format    = sanitizeString(body.format, 20);
+    const niches    = body.niches;
     const aiPersonalization = toBoolean(body.aiPersonalization);
 
-    // ── Validate ───────────────────────────────────────────────
     const errors: string[] = [];
-
-    if (!name) errors.push("Name is required");
-    if (!email || !isValidEmail(email)) errors.push("Valid email is required");
-    if (!isValidTopicsArray(topics)) errors.push("At least one valid topic is required");
+    if (!name)                           errors.push("Name is required");
+    if (!email || !isValidEmail(email))  errors.push("Valid email is required");
+    if (!isValidNichesArray(niches))     errors.push("At least one niche is required");
     if (!ALLOWED_FREQUENCIES.has(frequency)) errors.push("Invalid frequency");
-    if (!ALLOWED_FORMATS.has(format)) errors.push("Invalid format");
+    if (!ALLOWED_FORMATS.has(format))    errors.push("Invalid format");
 
     if (errors.length > 0) {
       return NextResponse.json({ error: errors[0] }, { status: 400 });
     }
 
-    // Type-narrowed after validation
-    const validTopics = topics as string[];
+    const validNiches = (niches as string[]).map(sanitizeNiche);
 
-    // ── Forward to Make.com ────────────────────────────────────
     const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL;
     if (MAKE_WEBHOOK_URL) {
       try {
@@ -67,25 +60,18 @@ export async function POST(request: Request) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              name,
-              email,
-              topics: validTopics,
-              customTopics,
-              frequency,
-              format,
-              aiPersonalization,
+              name, email, niches: validNiches,
+              frequency, format, aiPersonalization,
               subscribedAt: new Date().toISOString(),
             }),
           },
           8_000
         );
       } catch (err) {
-        // Log but don't block the user — webhook is non-critical path
         console.error("Make.com webhook error:", err instanceof Error ? err.message : "unknown");
       }
     }
 
-    // ── Forward to ConvertKit ──────────────────────────────────
     const KIT_API_KEY = process.env.KIT_API_KEY;
     const KIT_FORM_ID = process.env.KIT_FORM_ID;
     if (KIT_API_KEY && KIT_FORM_ID) {
@@ -100,11 +86,10 @@ export async function POST(request: Request) {
               email,
               first_name: name.split(" ")[0],
               fields: {
-                topics: validTopics.join(","),
+                niches: validNiches.join(", "),
                 frequency,
                 format,
                 ai_personalization: String(aiPersonalization),
-                ...(customTopics ? { custom_topics: customTopics } : {}),
               },
             }),
           },

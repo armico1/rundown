@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Papertrail`,
+    title: `${post.title} — KYN`,
     description: post.excerpt,
   };
 }
@@ -87,7 +87,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
-            papertrail
+            KYN
           </Link>
           <div className="hidden sm:flex items-center gap-8">
             <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
@@ -169,7 +169,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               Enjoyed this? Get the daily brief.
             </div>
             <p className="text-sm text-brand-muted mb-6 max-w-sm mx-auto leading-relaxed">
-              Papertrail delivers a 5-minute personalized news briefing every morning. Free, forever.
+              KYN delivers a 5-minute personalized news briefing every morning. Free, forever.
             </p>
             <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
               Subscribe Free
@@ -218,13 +218,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       {/* Footer */}
       <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-bold text-white/70">papertrail</span>
+          <span className="text-sm font-bold text-white/70">KYN</span>
           <div className="flex items-center gap-8">
             {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
               <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
             ))}
           </div>
-          <span className="text-xs text-white/30 font-mono">&copy; 2026 Papertrail</span>
+          <span className="text-xs text-white/30 font-mono">&copy; 2026 KYN</span>
         </div>
       </footer>
     </div>

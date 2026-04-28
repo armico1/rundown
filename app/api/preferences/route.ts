@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import {
   sanitizeString,
+  sanitizeNiche,
   isValidEmail,
-  isValidTopicsArray,
+  isValidNichesArray,
   ALLOWED_FREQUENCIES,
   ALLOWED_FORMATS,
   fetchWithTimeout,
@@ -14,13 +15,11 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
-    // ── Body size guard ────────────────────────────────────────
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
       return NextResponse.json({ error: "Payload too large" }, { status: 413 });
     }
 
-    // ── Parse ──────────────────────────────────────────────────
     let raw: unknown;
     try {
       raw = await request.json();
@@ -32,27 +31,24 @@ export async function POST(request: Request) {
     }
     const body = raw as Record<string, unknown>;
 
-    // ── Sanitize & validate ────────────────────────────────────
-    const email = sanitizeString(body.email, 320).toLowerCase();
-    const topics = body.topics;
+    const email     = sanitizeString(body.email, 320).toLowerCase();
+    const niches    = body.niches;
     const frequency = sanitizeString(body.frequency, 50);
-    const format = sanitizeString(body.format, 20);
-    const customTopics = sanitizeString(body.customTopics, 500);
+    const format    = sanitizeString(body.format, 20);
     const aiPersonalization = toBoolean(body.aiPersonalization);
 
     const errors: string[] = [];
-    if (!email || !isValidEmail(email)) errors.push("Valid email is required");
-    if (!isValidTopicsArray(topics)) errors.push("At least one valid topic is required");
+    if (!email || !isValidEmail(email))      errors.push("Valid email is required");
+    if (!isValidNichesArray(niches))         errors.push("At least one niche is required");
     if (!ALLOWED_FREQUENCIES.has(frequency)) errors.push("Invalid frequency");
-    if (!ALLOWED_FORMATS.has(format)) errors.push("Invalid format");
+    if (!ALLOWED_FORMATS.has(format))        errors.push("Invalid format");
 
     if (errors.length > 0) {
       return NextResponse.json({ error: errors[0] }, { status: 400 });
     }
 
-    const validTopics = topics as string[];
+    const validNiches = (niches as string[]).map(sanitizeNiche);
 
-    // ── Forward preferences update to Make.com ─────────────────
     const MAKE_PREFERENCES_WEBHOOK_URL = process.env.MAKE_PREFERENCES_WEBHOOK_URL;
     if (MAKE_PREFERENCES_WEBHOOK_URL) {
       try {
@@ -62,12 +58,8 @@ export async function POST(request: Request) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              email,
-              topics: validTopics,
-              customTopics,
-              frequency,
-              format,
-              aiPersonalization,
+              email, niches: validNiches,
+              frequency, format, aiPersonalization,
               updatedAt: new Date().toISOString(),
             }),
           },
@@ -75,26 +67,6 @@ export async function POST(request: Request) {
         );
       } catch (err) {
         console.error("Preferences webhook error:", err instanceof Error ? err.message : "unknown");
-      }
-    }
-
-    // ── Update ConvertKit subscriber fields ────────────────────
-    const KIT_API_KEY = process.env.KIT_API_KEY;
-    if (KIT_API_KEY) {
-      try {
-        // ConvertKit v3: update subscriber by email via tag/field update
-        await fetchWithTimeout(
-          `https://api.convertkit.com/v3/subscribers`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          },
-          5_000
-        );
-        // Full subscriber update (PATCH) would go here once you have subscriber ID lookup.
-        // For now the Make.com webhook handles the CRM sync.
-      } catch (err) {
-        console.error("ConvertKit preferences error:", err instanceof Error ? err.message : "unknown");
       }
     }
 
