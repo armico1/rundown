@@ -10,7 +10,8 @@ export function isValidNichesArray(niches: unknown): niches is string[] {
 }
 
 export function sanitizeNiche(n: string): string {
-  return n.replace(/[<>"']/g, "").trim().slice(0, 100);
+  // Keep apostrophes so names like "O'Brien" aren't mangled
+  return n.replace(/[<>"]/g, "").trim().slice(0, 100);
 }
 
 /** Legacy topic allowlist — kept for any backward-compat reads */

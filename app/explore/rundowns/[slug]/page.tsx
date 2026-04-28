@@ -11,8 +11,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const edition = getRundownBySlug(slug);
   if (!edition) return {};
   return {
-    title: `${edition.date} — KYN Sample Edition`,
-    description: `Sample KYN briefing for ${edition.date}. ${edition.topStory}`,
+    title: `${edition.shortDate} Sample Edition`,
+    description: `Sample KYN briefing for ${edition.date}: ${edition.topStory}`,
+    openGraph: {
+      title: `${edition.shortDate} Sample Edition`,
+      description: edition.topStory,
+      type: "article",
+      publishedTime: edition.date,
+    },
+    alternates: { canonical: `https://kyn.news/explore/rundowns/${slug}` },
   };
 }
 
@@ -39,8 +46,21 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
   const prevEdition = currentIndex < RUNDOWNS.length - 1 ? RUNDOWNS[currentIndex + 1] : null;
   const nextEdition = currentIndex > 0 ? RUNDOWNS[currentIndex - 1] : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: edition.topStory,
+    description: `Sample KYN briefing for ${edition.date}. ${edition.topStory}`,
+    author: { "@type": "Organization", name: "KYN", url: "https://kyn.news" },
+    publisher: { "@type": "Organization", name: "KYN", url: "https://kyn.news" },
+    datePublished: edition.date,
+    url: `https://kyn.news/explore/rundowns/${slug}`,
+    keywords: edition.topics.join(", "),
+  };
+
   return (
     <div className="bg-white text-brand-text min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">

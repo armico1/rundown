@@ -11,8 +11,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — KYN`,
+    title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["KYN"],
+      url: `https://kyn.news/blog/${post.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
+    alternates: { canonical: `https://kyn.news/blog/${post.slug}` },
   };
 }
 
@@ -80,8 +94,20 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const related = getRelatedPosts(post, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    author: { "@type": "Organization", name: "KYN", url: "https://kyn.news" },
+    publisher: { "@type": "Organization", name: "KYN", url: "https://kyn.news" },
+    datePublished: post.date,
+    url: `https://kyn.news/blog/${post.slug}`,
+  };
+
   return (
     <div className="bg-white text-brand-text min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
