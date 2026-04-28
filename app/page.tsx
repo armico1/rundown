@@ -117,7 +117,7 @@ export default function Home() {
     setPrefSaving(true);
     setPrefError("");
     if (!prefEmail.includes("@")) { setPrefError("Enter a valid email."); setPrefSaving(false); return; }
-    if (!prefNiches.length)       { setPrefError("Add at least one niche."); setPrefSaving(false); return; }
+    if (!prefNiches.length)       { setPrefError("Add at least one interest."); setPrefSaving(false); return; }
     try {
       const res = await fetch("/api/preferences", {
         method: "POST",
@@ -138,25 +138,22 @@ export default function Home() {
       {/* ── Nav ─────────────────────────────────────────────── */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "nav-scrolled" : "bg-transparent"}`}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="text-base font-extrabold tracking-tight text-brand-text">KYN</span>
-            <span className="hidden sm:block text-xs text-brand-subtle tracking-wide">Know Your Niche</span>
+          <Link href="/" className="text-base font-extrabold tracking-tight text-brand-text">
+            KYN
           </Link>
-          <div className="flex items-center gap-1">
-            {(["explore", "catchup", "preferences"] as PanelTab[]).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => openPanel(tab)}
-                className={`text-xs px-3 py-2 rounded-full transition-colors ${
-                  panel === tab ? "bg-brand-dark text-white" : "text-brand-muted hover:text-brand-text"
-                }`}
-              >
-                {PANEL_LABELS[tab]}
-              </button>
-            ))}
-            <Link href="/subscribe" className="btn-primary text-xs py-2.5 px-4 ml-2">
-              Get My Rundown
+          <div className="flex items-center gap-3">
+            <Link href="/subscribe" className="btn-primary text-xs py-2.5 px-4">
+              Start free
             </Link>
+            <button
+              onClick={() => openPanel("explore")}
+              aria-label="Open menu"
+              className="w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-brand-section transition-colors"
+            >
+              <span className="w-[18px] h-[1.5px] bg-brand-text rounded-full block" />
+              <span className="w-[18px] h-[1.5px] bg-brand-text rounded-full block" />
+              <span className="w-[18px] h-[1.5px] bg-brand-text rounded-full block" />
+            </button>
           </div>
         </div>
       </nav>
@@ -165,12 +162,11 @@ export default function Home() {
       <section className="min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 sm:px-10">
         <div className="max-w-4xl mx-auto w-full">
           <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-6">
-            <motion.p variants={fadeUp} className="label">Know Your Niche</motion.p>
             <motion.h1 variants={fadeUp} className="text-display-lg font-extrabold text-brand-text leading-none tracking-tightest max-w-3xl">
-              Your obsession,<br />delivered daily.
+              Everything you follow.<br />Nothing you don&apos;t.
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-brand-muted max-w-md leading-relaxed">
-              KYN builds a tight daily brief around the exact teams, stocks, and names you follow. Not categories. Your niche.
+              Type in the Lakers, TSLA, or AOC. Get a tight five-minute brief on exactly those — every morning, in your inbox.
             </motion.p>
             <motion.form variants={fadeUp} onSubmit={handleHeroSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
               <input
@@ -187,14 +183,14 @@ export default function Home() {
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
               >
-                Get My Rundown
+                Build my brief
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </motion.button>
             </motion.form>
             <motion.p variants={fadeUp} className="text-xs text-brand-subtle">
-              Free forever. No credit card. Unsubscribe anytime.
+              Free. No credit card. Unsubscribe anytime.
             </motion.p>
           </motion.div>
         </div>
@@ -203,12 +199,11 @@ export default function Home() {
       {/* ── Niche examples ──────────────────────────────────── */}
       <section className="py-14 px-6 sm:px-10 bg-brand-section border-y border-brand-border">
         <Section className="max-w-4xl mx-auto">
-          <motion.p variants={fadeUp} className="label mb-6">What your niche brief looks like</motion.p>
           <motion.div variants={stagger} className="grid sm:grid-cols-3 gap-4 mb-5">
             {[
-              { niche: "Lakers", update: "AD returns from ankle injury Tuesday. Reaves extension finalized. Next: vs. Warriors, Thursday." },
-              { niche: "TSLA",   update: "Up 4.2% after delivery beat. Musk hints Model 2 reveal. BofA upgrades to Buy, PT $280." },
-              { niche: "AOC",    update: "New housing bill introduced in committee. Town hall in the Bronx Friday. Responds to GOP critic." },
+              { niche: "Lakers",  update: "AD returns from ankle injury Tuesday. Reaves extension finalized. Next: vs. Warriors, Thursday." },
+              { niche: "TSLA",    update: "Up 4.2% after delivery beat. Musk hints Model 2 reveal. BofA upgrades to Buy, PT $280." },
+              { niche: "AOC",     update: "New housing bill introduced in committee. Town hall in the Bronx Friday. Responds to GOP critic." },
             ].map(({ niche, update }) => (
               <motion.div key={niche} variants={fadeUp} className="p-5 bg-white border border-brand-border rounded-xl">
                 <p className="text-xs font-bold text-brand-text uppercase tracking-widest mb-2">{niche}</p>
@@ -217,7 +212,7 @@ export default function Home() {
             ))}
           </motion.div>
           <motion.p variants={fadeUp} className="text-xs text-brand-subtle">
-            Not &ldquo;Sports.&rdquo; The Lakers. Not &ldquo;Markets.&rdquo; TSLA. That&apos;s KYN.
+            Not &ldquo;Sports.&rdquo; The Lakers. Not &ldquo;Markets.&rdquo; TSLA. You tell us exactly what to cover.
           </motion.p>
         </Section>
       </section>
@@ -226,15 +221,14 @@ export default function Home() {
       <section className="py-16 px-6 sm:px-10 bg-white">
         <div className="max-w-4xl mx-auto">
           <Section>
-            <motion.p variants={fadeUp} className="label mb-4">Simple by design</motion.p>
-            <motion.h2 variants={fadeUp} className="text-display-md font-bold text-brand-text mb-10 max-w-xs">
-              Know your niche in 3 steps.
+            <motion.h2 variants={fadeUp} className="text-display-md font-bold text-brand-text mb-10 max-w-xs leading-tight">
+              Up and running in three steps.
             </motion.h2>
             <motion.div variants={stagger} className="grid sm:grid-cols-3 gap-px bg-brand-border">
               {[
-                { n: "01", title: "Name your niche", body: "Type the exact teams, stocks, and names you follow. Not Sports — the Lakers. Not Markets — TSLA." },
-                { n: "02", title: "Set your cadence", body: "Daily, every other day, or weekly. Lands in your inbox every morning on your schedule." },
-                { n: "03", title: "Know your niche", body: "A tight, sharp 5-minute brief covering everything in your world. Nothing outside it." },
+                { n: "01", title: "Tell us what you follow", body: "Type in the exact teams, stocks, and people you track. Specific names only — we don't do categories." },
+                { n: "02", title: "Pick your schedule",      body: "Daily, a few times a week, or weekly. Arrives in your inbox exactly when you want it." },
+                { n: "03", title: "Read in five minutes",    body: "A sharp, concise brief built around your list. Nothing outside it." },
               ].map((s) => (
                 <motion.div key={s.n} variants={fadeUp} className="bg-white p-7 flex flex-col gap-4">
                   <span className="label text-brand-subtle">{s.n}</span>
@@ -251,12 +245,11 @@ export default function Home() {
       <section className="py-24 px-6 sm:px-10 bg-brand-dark text-white">
         <div className="max-w-3xl mx-auto text-center">
           <Section>
-            <motion.p variants={fadeUp} className="label-dark mb-4">Know Your Niche</motion.p>
             <motion.h2 variants={fadeUp} className="text-display-md font-extrabold text-white mb-4 tracking-tightest">
-              Start knowing yours tomorrow.
+              Your first brief lands tomorrow.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/60 mb-10 max-w-sm mx-auto text-sm leading-relaxed">
-              Join KYN free. Tell us your niche. Your first brief arrives tomorrow morning.
+              Tell us what you follow. Wake up to a brief that&apos;s actually about you.
             </motion.p>
             <motion.form variants={fadeUp} onSubmit={handleHeroSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
               <input
@@ -273,10 +266,10 @@ export default function Home() {
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
               >
-                Get My Rundown →
+                Start free →
               </motion.button>
             </motion.form>
-            <motion.p variants={fadeUp} className="text-white/30 text-xs mt-4">Free forever. No card needed.</motion.p>
+            <motion.p variants={fadeUp} className="text-white/30 text-xs mt-4">No card needed. Cancel anytime.</motion.p>
           </Section>
         </div>
       </section>
@@ -284,7 +277,7 @@ export default function Home() {
       {/* ── Footer ───────────────────────────────────────────── */}
       <footer className="bg-brand-dark border-t border-white/10 py-8 px-6 sm:px-10">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-sm font-extrabold text-white/70">KYN <span className="font-normal text-white/30 text-xs">· Know Your Niche</span></span>
+          <span className="text-sm font-extrabold text-white/70">KYN</span>
           <div className="flex items-center gap-6">
             {(["explore", "catchup", "preferences"] as PanelTab[]).map((tab) => (
               <button key={tab} onClick={() => openPanel(tab)} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">
@@ -398,7 +391,7 @@ export default function Home() {
                     {!cuStories ? (
                       <>
                         <div>
-                          <p className="label mb-3">Your niche</p>
+                          <p className="label mb-3">What do you follow?</p>
                           <NicheInput value={cuNiches} onChange={setCuNiches} compact />
                         </div>
                         <div>
@@ -433,15 +426,15 @@ export default function Home() {
                           disabled={!canCatchUp}
                           className={`w-full btn-primary justify-center ${!canCatchUp ? "opacity-40 cursor-not-allowed" : ""}`}
                         >
-                          {cuLoading ? "Building your catch-up…" : "Catch Me Up →"}
+                          {cuLoading ? "Building your catch-up…" : "Catch me up →"}
                         </button>
                       </>
                     ) : (
                       <>
                         <div className="flex items-center justify-between">
-                          <p className="font-semibold text-brand-text">Your Catch-Up</p>
+                          <p className="font-semibold text-brand-text">Your catch-up</p>
                           <button onClick={() => { setCuStories(null); setCuError(""); }} className="text-xs text-brand-muted hover:text-brand-text underline">
-                            Reset
+                            Start over
                           </button>
                         </div>
                         <div className="space-y-3">
@@ -454,7 +447,7 @@ export default function Home() {
                           ))}
                         </div>
                         <Link href="/subscribe" onClick={() => setPanel(null)} className="btn-primary w-full justify-center text-xs">
-                          Get this daily — Subscribe Free →
+                          Get this daily — subscribe free →
                         </Link>
                       </>
                     )}
@@ -469,17 +462,17 @@ export default function Home() {
                       <input type="email" value={prefEmail} onChange={(e) => setPrefEmail(e.target.value)} placeholder="you@example.com" className="input-clean" />
                     </div>
                     <div>
-                      <p className="label mb-3">Your niche</p>
+                      <p className="label mb-3">What do you follow?</p>
                       <NicheInput value={prefNiches} onChange={setPrefNiches} compact />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-brand-text mb-2 uppercase tracking-widest">Frequency</label>
                       <div className="space-y-1.5">
                         {[
-                          { id: "daily",          label: "Daily" },
+                          { id: "daily",           label: "Daily" },
                           { id: "every-other-day", label: "Every other day" },
-                          { id: "3x-week",        label: "3× per week" },
-                          { id: "weekly",         label: "Weekly" },
+                          { id: "3x-week",         label: "3× per week" },
+                          { id: "weekly",          label: "Weekly" },
                         ].map((f) => (
                           <button
                             key={f.id}
@@ -515,7 +508,7 @@ export default function Home() {
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
-                        Preferences saved.
+                        Saved.
                       </p>
                     )}
                     <button
