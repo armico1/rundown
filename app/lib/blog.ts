@@ -184,7 +184,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "KYN doesn't use broad categories — you type in exactly what you follow. That means 'the Lakers' instead of 'Sports', 'TSLA' instead of 'Finance', 'AOC' instead of 'Politics'. The more specific you are from day one, the sharper your brief will be.",
+        text: "Tell us exactly what you follow — the Lakers, TSLA, Jensen Huang, Bitcoin. KYN builds your brief around that list. The more specific you are from day one, the sharper your brief becomes.",
       },
       {
         type: "paragraph",

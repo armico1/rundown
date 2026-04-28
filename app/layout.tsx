@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s — KYN",
   },
   description:
-    "A five-minute daily brief built around the specific things you follow. Not categories — the Lakers, TSLA, AOC. Your brief, every morning.",
+    "A five-minute daily brief built around the specific things you follow — the Lakers, TSLA, Bitcoin. Your brief, every morning.",
   keywords: ["personalized news", "daily brief", "newsletter", "morning brief", "custom news digest"],
   authors: [{ name: "KYN", url: "https://kyn.news" }],
   creator: "KYN",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "KYN",
     title: "KYN — Everything you follow. Nothing you don't.",
     description:
-      "A five-minute daily brief built around the specific things you follow. Not categories — the Lakers, TSLA, AOC.",
+      "A five-minute daily brief built around the specific things you follow — the Lakers, TSLA, Bitcoin.",
     images: [
       {
         url: "/og-image.png",

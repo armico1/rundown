@@ -83,7 +83,7 @@ export default function Home() {
               Everything you follow.<br />Nothing you don&apos;t.
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-brand-muted max-w-md leading-relaxed">
-              Type in the Lakers, TSLA, or AOC. Get a tight five-minute brief on each one — every morning, in your inbox.
+              Tell us what you follow. Wake up to a brief built around every single thing on your list — every morning, in your inbox.
             </motion.p>
             <motion.form variants={fadeUp} onSubmit={handleHeroSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
               <input
@@ -120,7 +120,7 @@ export default function Home() {
             {[
               { niche: "Lakers",  update: "AD returns from ankle injury Tuesday. Reaves extension finalized. Next: vs. Warriors, Thursday." },
               { niche: "TSLA",    update: "Up 4.2% after delivery beat. Musk hints Model 2 reveal. BofA upgrades to Buy, PT $280." },
-              { niche: "AOC",     update: "New housing bill introduced in committee. Town hall in the Bronx Friday. Responds to GOP critic." },
+              { niche: "Bitcoin", update: "Crosses $72K on ETF inflow surge. BlackRock expands holdings by 18K BTC. Options market pricing further upside through month-end." },
             ].map(({ niche, update }) => (
               <motion.div key={niche} variants={fadeUp} className="p-5 bg-white border border-brand-border rounded-xl">
                 <p className="text-xs font-bold text-brand-text uppercase tracking-widest mb-2">{niche}</p>
@@ -143,9 +143,9 @@ export default function Home() {
             </motion.h2>
             <motion.div variants={stagger} className="grid sm:grid-cols-3 gap-px bg-brand-border">
               {[
-                { n: "01", title: "Tell us what you follow", body: "Type in the teams, stocks, and people you track. Specific names only — we don't do categories." },
+                { n: "01", title: "Tell us what you follow", body: "Type in the teams, stocks, and people you follow. The more specific your list, the sharper your brief." },
                 { n: "02", title: "Pick your schedule",      body: "Daily, a few times a week, or weekly. Arrives in your inbox on your schedule." },
-                { n: "03", title: "Read in five minutes",    body: "A sharp, concise brief built around your list. Nothing outside it." },
+                { n: "03", title: "Read in five minutes",    body: "A sharp, focused brief built around everything on your list. Yours, every morning." },
               ].map((s) => (
                 <motion.div key={s.n} variants={fadeUp} className="bg-white p-7 flex flex-col gap-4">
                   <span className="label text-brand-subtle">{s.n}</span>

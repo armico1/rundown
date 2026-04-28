@@ -147,7 +147,7 @@ export default function Settings() {
                 <div className="border border-brand-border rounded-xl p-7">
                   <h2 className="text-2xl font-bold text-brand-text mb-2">Your Niche</h2>
                   <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    The specific teams, stocks, politicians, and people your brief is built around.
+                    The teams, stocks, and people your brief is built around.
                     {niches.length > 0 ? ` ${niches.length} niche${niches.length !== 1 ? "s" : ""} currently set.` : " Add at least one."}
                   </p>
                   <NicheInput value={niches} onChange={setNiches} />

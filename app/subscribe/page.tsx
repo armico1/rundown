@@ -157,8 +157,7 @@ export default function Subscribe() {
                   <div>
                     <h1 className="text-display-md font-extrabold text-brand-text tracking-tight mb-2">Name your niche.</h1>
                     <p className="text-brand-muted text-sm leading-relaxed">
-                      Type the specific teams, stocks, politicians, or people you actually follow.
-                      Not &ldquo;Sports&rdquo; — the Lakers. Not &ldquo;Markets&rdquo; — TSLA.
+                      Type the teams, stocks, and people you follow. The Lakers, not just &ldquo;Sports.&rdquo; TSLA, not just &ldquo;Markets.&rdquo; Your brief goes as specific as you do.
                     </p>
                   </div>
                   <NicheInput value={niches} onChange={setNiches} />

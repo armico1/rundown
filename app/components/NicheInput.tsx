@@ -5,8 +5,8 @@ import { useState } from "react";
 const QUICK_ADD: Record<string, string[]> = {
   Teams:  ["Lakers", "Chiefs", "Yankees", "Warriors", "Cowboys", "Celtics"],
   Stocks: ["TSLA", "NVDA", "AAPL", "BTC", "AMZN", "MSFT"],
-  People: ["Elon Musk", "Trump", "AOC", "LeBron James", "Bezos", "Powell"],
-  Topics: ["Gaza", "Ukraine", "Fed rates", "AI regulation", "Housing market"],
+  People: ["Elon Musk", "LeBron James", "Bezos", "Jensen Huang", "Tim Cook", "Taylor Swift"],
+  Topics: ["Fed rates", "AI regulation", "Housing market", "Climate tech", "Box office", "Real estate"],
 };
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 export function NicheInput({
   value,
   onChange,
-  placeholder = "e.g., Lakers, TSLA, AOC, Bitcoin...",
+  placeholder = "e.g., Lakers, TSLA, Bitcoin, NVIDIA...",
   compact = false,
 }: Props) {
   const [input, setInput] = useState("");
