@@ -1,34 +1,41 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         brand: {
-          dark: "#F2EDDB",        // notebook paper
-          deeper: "#E9E3CA",      // slightly darker paper (section bg)
-          card: "#FDFCF2",        // index card off-white
-          border: "#D0C9A4",      // aged paper edge
-          accent: "#1B55B0",      // blue pen ink
-          accentHover: "#144490",
-          accentGlow: "rgba(27, 85, 176, 0.14)",
-          text: "#1A1714",        // near-black ink
-          muted: "#6B6050",       // faded ink
-          success: "#2D6A35",     // green pen
-          line: "#BDD0E4",        // college-ruled line blue
-          margin: "#E88888",      // red margin line
-        }
+          bg:      "#ffffff",
+          dark:    "#0f0f0f",
+          section: "#f5f5f5",
+          border:  "#e5e5e5",
+          text:    "#0f0f0f",
+          muted:   "#666666",
+          subtle:  "#999999",
+          success: "#15803d",
+        },
       },
       fontFamily: {
-        sans: ['"Lora"', 'Georgia', 'serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        mono: ['"Courier Prime"', '"Courier New"', 'monospace'],
+        sans: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
+        mono: ['"Roboto Mono"', '"Courier New"', "monospace"],
+      },
+      letterSpacing: {
+        tightest: "-0.04em",
+        tighter:  "-0.02em",
+        widest:   "0.12em",
+      },
+      fontSize: {
+        "display-xl": ["clamp(3.5rem,9vw,8rem)", { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "800" }],
+        "display-lg": ["clamp(2.5rem,6vw,5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "800" }],
+        "display-md": ["clamp(1.75rem,4vw,3rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+      },
+      transitionTimingFunction: {
+        "expo-out": "cubic-bezier(0.19, 1, 0.22, 1)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

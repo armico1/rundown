@@ -17,7 +17,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 function parseInlineMarkdown(text: string): React.ReactNode[] {
-  // Handle **bold** inline markdown
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
@@ -41,79 +40,67 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
   const nextEdition = currentIndex > 0 ? RUNDOWNS[currentIndex - 1] : null;
 
   return (
-    <div className="min-h-screen bg-brand-dark">
+    <div className="bg-white text-brand-text min-h-screen">
+
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
-            paper<span className="text-brand-accent">trail</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
+            papertrail
           </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
-              Explore
-            </Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
-              Catch Me Up
-            </Link>
-            <Link
-              href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
-            >
-              Subscribe Free
-            </Link>
+          <div className="hidden sm:flex items-center gap-8">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
+            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Catch Me Up</Link>
+            <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Preferences</Link>
           </div>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Subscribe Free</Link>
         </div>
       </nav>
 
-      <div className="pt-24 pb-24 px-6">
+      <div className="pt-28 pb-24 px-6 sm:px-10">
         <div className="max-w-2xl mx-auto">
 
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-brand-muted mb-10">
-            <Link href="/" className="hover:text-brand-text transition-smooth">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-brand-muted mb-10 flex-wrap">
+            <Link href="/" className="hover:text-brand-text transition-colors">Home</Link>
             <span className="text-brand-border">/</span>
-            <Link href="/explore" className="hover:text-brand-text transition-smooth">Explore</Link>
+            <Link href="/explore" className="hover:text-brand-text transition-colors">Explore</Link>
             <span className="text-brand-border">/</span>
-            <Link
-              href="/explore"
-              className="hover:text-brand-text transition-smooth"
-            >
-              Sample Editions
-            </Link>
+            <Link href="/explore" className="hover:text-brand-text transition-colors">Sample Editions</Link>
             <span className="text-brand-border">/</span>
             <span className="text-brand-text">{edition.shortDate}</span>
           </nav>
 
-          {/* Sample disclaimer */}
-          <div className="mb-8 flex items-start gap-3 p-4 rounded-xl border border-amber-200 bg-amber-50 text-sm text-amber-800">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+          {/* Disclaimer */}
+          <div className="mb-8 flex items-start gap-3 p-4 rounded-xl border border-brand-border bg-brand-section text-sm text-brand-muted">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-brand-subtle" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
             </svg>
             <span>
-              This is a <strong>sample edition</strong> illustrating the Papertrail briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
+              This is a <strong className="text-brand-text">sample edition</strong> illustrating the Papertrail briefing format. Real subscriber editions are personalized per reader and are not publicly archived.
             </span>
           </div>
 
-          {/* Email-style briefing container */}
-          <div className="index-card overflow-hidden">
+          {/* Email-style briefing card */}
+          <div className="border border-brand-border rounded-2xl overflow-hidden">
 
-            {/* Email header chrome */}
-            <div className="px-7 pt-6 pb-5 border-b border-brand-border bg-brand-deeper">
+            {/* Email header */}
+            <div className="px-7 pt-6 pb-5 border-b border-brand-border bg-brand-section">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
-                  <span className="text-brand-accent font-bold text-sm">pt</span>
+                <div className="w-10 h-10 rounded-full bg-brand-dark flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm">pt</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <div className="font-semibold text-brand-text text-sm">Papertrail</div>
-                    <div className="text-xs text-brand-muted">{edition.dayOfWeek}, 8:00 AM</div>
+                    <div className="text-xs text-brand-subtle">{edition.dayOfWeek}, 8:00 AM</div>
                   </div>
                   <div className="text-xs text-brand-muted">Your personalized morning briefing · {edition.date}</div>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {edition.topics.map((t) => (
-                  <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-brand-card border border-brand-border text-brand-muted">
+                  <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-white border border-brand-border text-brand-subtle">
                     {t}
                   </span>
                 ))}
@@ -121,25 +108,22 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Briefing content */}
-            <div className="px-7 py-8 space-y-8 ruled-lines">
+            <div className="px-7 py-8 space-y-8 bg-white">
               {edition.sections.map((section, i) => (
                 <div key={i}>
-                  {/* Section label */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs font-bold text-brand-accent uppercase tracking-widest">
+                    <span className="text-xs font-bold text-brand-text uppercase tracking-widest">
                       {section.label}
                     </span>
                     <div className="flex-1 h-px bg-brand-border" />
                   </div>
 
-                  {/* Section headline */}
                   {section.headline && (
-                    <h2 className="font-display text-xl font-bold text-brand-text mb-3 leading-snug">
+                    <h2 className="text-xl font-bold text-brand-text mb-3 leading-snug">
                       {section.headline}
                     </h2>
                   )}
 
-                  {/* Section body — handle \n\n as paragraph breaks */}
                   <div className="space-y-4">
                     {section.body.split("\n\n").map((para, pi) => (
                       <p key={pi} className="text-sm text-brand-muted leading-relaxed">
@@ -151,15 +135,15 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
               ))}
             </div>
 
-            {/* Email footer chrome */}
-            <div className="px-7 py-5 border-t border-brand-border bg-brand-deeper">
+            {/* Email footer */}
+            <div className="px-7 py-5 border-t border-brand-border bg-brand-section">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <p className="text-xs text-brand-muted">
                   Papertrail · Your personalized daily brief
                 </p>
                 <Link
                   href="/subscribe"
-                  className="text-xs font-semibold text-brand-accent hover:text-brand-accentHover transition-smooth"
+                  className="text-xs font-semibold text-brand-text hover:text-brand-muted transition-colors link-underline"
                 >
                   Get this in your inbox →
                 </Link>
@@ -172,67 +156,53 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
             {prevEdition ? (
               <Link
                 href={`/explore/rundowns/${prevEdition.slug}`}
-                className="group flex items-center gap-2 text-sm text-brand-muted hover:text-brand-text transition-smooth"
+                className="group flex items-center gap-2 text-sm text-brand-muted hover:text-brand-text transition-colors"
               >
                 <svg className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
                 <span>
-                  <span className="block text-xs text-brand-muted mb-0.5">Older edition</span>
+                  <span className="block text-xs text-brand-subtle mb-0.5">Older edition</span>
                   <span className="font-medium">{prevEdition.shortDate}</span>
                 </span>
               </Link>
-            ) : (
-              <div />
-            )}
+            ) : <div />}
 
             {nextEdition ? (
               <Link
                 href={`/explore/rundowns/${nextEdition.slug}`}
-                className="group flex items-center gap-2 text-sm text-brand-muted hover:text-brand-text transition-smooth text-right"
+                className="group flex items-center gap-2 text-sm text-brand-muted hover:text-brand-text transition-colors text-right"
               >
                 <span>
-                  <span className="block text-xs text-brand-muted mb-0.5">Newer edition</span>
+                  <span className="block text-xs text-brand-subtle mb-0.5">Newer edition</span>
                   <span className="font-medium">{nextEdition.shortDate}</span>
                 </span>
                 <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </Link>
-            ) : (
-              <div />
-            )}
+            ) : <div />}
           </div>
 
           {/* Subscribe CTA */}
-          <div className="mt-10 p-8 index-card text-center overflow-hidden">
-            <div />
-            <div className="relative">
-              <p className="font-display text-xl font-bold text-brand-text mb-2">
-                Want this in your inbox every morning?
-              </p>
-              <p className="text-sm text-brand-muted mb-6 leading-relaxed max-w-sm mx-auto">
-                Yours will be personalized to your topics, delivered on your schedule. Always free.
-              </p>
-              <Link
-                href="/subscribe"
-                className="inline-flex items-center gap-2 px-7 py-3 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth glow"
-                style={{ borderRadius: "2px" }}
-              >
-                Subscribe Free
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
-              <p className="mt-3 text-xs text-brand-muted">No credit card. Unsubscribe anytime.</p>
-            </div>
+          <div className="mt-10 p-8 border border-brand-border rounded-2xl text-center bg-brand-section">
+            <p className="text-xl font-bold text-brand-text mb-2">
+              Want this in your inbox every morning?
+            </p>
+            <p className="text-sm text-brand-muted mb-6 leading-relaxed max-w-sm mx-auto">
+              Yours will be personalized to your topics, delivered on your schedule. Always free.
+            </p>
+            <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
+              Subscribe Free
+            </Link>
+            <p className="mt-3 text-xs text-brand-subtle">No credit card. Unsubscribe anytime.</p>
           </div>
 
           {/* Back link */}
           <div className="mt-8 text-center">
             <Link
               href="/explore"
-              className="text-sm text-brand-muted hover:text-brand-text transition-smooth inline-flex items-center gap-1.5"
+              className="text-sm text-brand-muted hover:text-brand-text transition-colors inline-flex items-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -240,26 +210,19 @@ export default async function RundownPage({ params }: { params: Promise<{ slug: 
               Back to Explore
             </Link>
           </div>
-
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-brand-border/60 py-12 px-6 bg-brand-dark">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-display text-lg font-bold text-brand-text">
-              paper<span className="text-brand-accent">trail</span>
-            </span>
-            <span className="text-brand-border">·</span>
-            <span className="text-sm text-brand-muted">&copy; 2026. All rights reserved.</span>
+      <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <span className="text-sm font-bold text-white/70">papertrail</span>
+          <div className="flex items-center gap-8">
+            {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
+              <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
+            ))}
           </div>
-          <div className="flex items-center gap-6">
-            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Explore</Link>
-            <Link href="/subscribe" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Subscribe</Link>
-            <Link href="/catchup" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Catch Me Up</Link>
-            <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">Preferences</Link>
-          </div>
+          <span className="text-xs text-white/30 font-mono">&copy; 2026 Papertrail</span>
         </div>
       </footer>
     </div>

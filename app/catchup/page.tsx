@@ -4,31 +4,31 @@ import Link from "next/link";
 import { useState } from "react";
 
 const TOPICS = [
-  { id: "world-news", label: "World News", icon: "🌍" },
-  { id: "politics", label: "US Politics", icon: "🏛️" },
-  { id: "stocks", label: "Stocks & Markets", icon: "📈" },
-  { id: "business-tech", label: "Business & Tech", icon: "💼" },
-  { id: "science", label: "Science", icon: "🔬" },
-  { id: "health", label: "Health & Wellness", icon: "💪" },
-  { id: "sports", label: "Sports", icon: "⚽" },
-  { id: "entertainment", label: "Entertainment", icon: "🎬" },
-  { id: "climate", label: "Climate & Energy", icon: "🌱" },
-  { id: "ai", label: "Artificial Intelligence", icon: "🤖" },
-  { id: "crypto", label: "Crypto & Web3", icon: "₿" },
-  { id: "space", label: "Space", icon: "🚀" },
-  { id: "personal-finance", label: "Personal Finance", icon: "💰" },
-  { id: "real-estate", label: "Real Estate", icon: "🏠" },
-  { id: "food", label: "Food & Dining", icon: "🍽️" },
-  { id: "travel", label: "Travel", icon: "✈️" },
-  { id: "global-economy", label: "Global Economy", icon: "🌐" },
-  { id: "education", label: "Education", icon: "📚" },
-  { id: "law", label: "Law & Justice", icon: "⚖️" },
-  { id: "military", label: "Military & Defense", icon: "🛡️" },
-  { id: "international", label: "International Affairs", icon: "🗺️" },
-  { id: "arts", label: "Arts & Culture", icon: "🎨" },
-  { id: "music", label: "Music", icon: "🎵" },
-  { id: "gaming", label: "Gaming", icon: "🎮" },
-  { id: "religion", label: "Religion & Society", icon: "🕌" },
+  { id: "world-news", label: "World News" },
+  { id: "politics", label: "US Politics" },
+  { id: "stocks", label: "Stocks & Markets" },
+  { id: "business-tech", label: "Business & Tech" },
+  { id: "science", label: "Science" },
+  { id: "health", label: "Health & Wellness" },
+  { id: "sports", label: "Sports" },
+  { id: "entertainment", label: "Entertainment" },
+  { id: "climate", label: "Climate & Energy" },
+  { id: "ai", label: "Artificial Intelligence" },
+  { id: "crypto", label: "Crypto & Web3" },
+  { id: "space", label: "Space" },
+  { id: "personal-finance", label: "Personal Finance" },
+  { id: "real-estate", label: "Real Estate" },
+  { id: "food", label: "Food & Dining" },
+  { id: "travel", label: "Travel" },
+  { id: "global-economy", label: "Global Economy" },
+  { id: "education", label: "Education" },
+  { id: "law", label: "Law & Justice" },
+  { id: "military", label: "Military & Defense" },
+  { id: "international", label: "International Affairs" },
+  { id: "arts", label: "Arts & Culture" },
+  { id: "music", label: "Music" },
+  { id: "gaming", label: "Gaming" },
+  { id: "religion", label: "Religion & Society" },
 ];
 
 const TIMEFRAMES = [
@@ -84,42 +84,33 @@ export default function CatchUp() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-dark">
+    <div className="bg-white text-brand-text min-h-screen">
+
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border/70 bg-brand-dark/88 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="font-display text-2xl font-bold text-brand-text tracking-tight">
-            paper<span className="text-brand-accent">trail</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
+            papertrail
           </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
-              Explore
-            </Link>
-            <Link
-              href="/subscribe"
-              className="text-sm font-semibold px-5 py-2 bg-brand-accent hover:bg-brand-accentHover text-white transition-smooth" style={{ borderRadius: "2px" }}
-            >
-              Subscribe Free
-            </Link>
+          <div className="hidden sm:flex items-center gap-8">
+            <Link href="/explore" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Explore</Link>
+            <Link href="/catchup" className="text-sm font-semibold text-brand-text link-underline">Catch Me Up</Link>
+            <Link href="/settings" className="text-sm text-brand-muted hover:text-brand-text transition-colors link-underline">Preferences</Link>
           </div>
+          <Link href="/subscribe" className="btn-primary text-xs py-3 px-5">Subscribe Free</Link>
         </div>
       </nav>
 
-      <div className="pt-28 pb-20 px-6 ruled-bg min-h-screen">
+      <div className="pt-32 pb-24 px-6 sm:px-10">
         <div className="max-w-2xl mx-auto">
 
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-border bg-brand-card mb-6 shadow-sm font-mono text-xs" style={{ borderRadius: "2px" }}>
-              <svg className="w-4 h-4 text-brand-accent" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-              </svg>
-              <span className="text-xs font-medium text-brand-muted uppercase tracking-widest">Instant catch-up</span>
-            </div>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-brand-text mb-4 tracking-tight">
+          <div className="mb-12">
+            <p className="label mb-4">Instant catch-up</p>
+            <h1 className="text-display-md font-bold text-brand-text mb-4">
               Catch Me Up
             </h1>
-            <p className="text-lg text-brand-muted max-w-lg mx-auto leading-relaxed">
+            <p className="text-lg text-brand-muted leading-relaxed">
               Missed a few days? Tell us your topics and how far back to look.
               We&apos;ll build you a personalized recap in seconds.
             </p>
@@ -129,45 +120,39 @@ export default function CatchUp() {
             <div className="space-y-10">
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-brand-text mb-2">Your email</label>
+                <label className="block text-sm font-semibold text-brand-text mb-2">Your email</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 border border-brand-border bg-brand-card text-brand-text placeholder-brand-muted/50 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-smooth font-sans" style={{ borderRadius: "2px" }}
+                  className="input-clean"
                 />
-                <p className="text-xs text-brand-muted mt-1.5">We&apos;ll also send the recap to your inbox.</p>
+                <p className="text-xs text-brand-subtle mt-2">We&apos;ll also send the recap to your inbox.</p>
               </div>
 
               {/* Topics */}
               <div>
-                <label className="block text-sm font-medium text-brand-text mb-3">
+                <label className="block text-sm font-semibold text-brand-text mb-3">
                   What topics?
                   {selectedTopics.length > 0 && (
-                    <span className="ml-2 text-brand-accent font-normal">{selectedTopics.length} selected</span>
+                    <span className="ml-2 text-brand-muted font-normal">{selectedTopics.length} selected</span>
                   )}
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {TOPICS.map((topic) => {
                     const selected = selectedTopics.includes(topic.id);
                     return (
                       <button
                         key={topic.id}
                         onClick={() => toggleTopic(topic.id)}
-                        className={`flex items-center gap-2.5 px-3.5 py-3 border text-left transition-smooth ${
+                        className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
                           selected
-                            ? "chip-selected text-brand-text"
-                            : "border-brand-border bg-brand-card text-brand-muted hover:border-brand-accent/40 hover:text-brand-text hover:bg-brand-deeper"
+                            ? "bg-brand-dark border-brand-dark text-white"
+                            : "border-brand-border bg-white text-brand-muted hover:border-brand-dark hover:text-brand-text"
                         }`}
                       >
-                        <span className="text-lg">{topic.icon}</span>
-                        <span className="text-sm font-medium leading-tight">{topic.label}</span>
-                        {selected && (
-                          <svg className="w-3.5 h-3.5 ml-auto text-brand-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        )}
+                        {topic.label}
                       </button>
                     );
                   })}
@@ -176,50 +161,42 @@ export default function CatchUp() {
 
               {/* Timeframe */}
               <div>
-                <label className="block text-sm font-medium text-brand-text mb-3">How far back?</label>
-                <div className="space-y-3">
+                <label className="block text-sm font-semibold text-brand-text mb-3">How far back?</label>
+                <div className="space-y-2">
                   {TIMEFRAMES.map((tf) => (
                     <button
                       key={tf.id}
                       onClick={() => setTimeframe(tf.id)}
-                      className={`w-full flex items-center justify-between px-5 py-4 border text-left transition-smooth ${
+                      className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-colors ${
                         timeframe === tf.id
-                          ? "chip-selected"
-                          : "border-brand-border bg-brand-card hover:border-brand-accent/40 hover:bg-brand-deeper"
+                          ? "bg-brand-dark border-brand-dark text-white"
+                          : "border-brand-border bg-white hover:border-brand-dark"
                       }`}
                     >
                       <div>
-                        <div className="font-semibold text-brand-text">{tf.label}</div>
-                        <div className="text-sm text-brand-muted">{tf.desc}</div>
+                        <div className={`font-semibold text-sm ${timeframe === tf.id ? "text-white" : "text-brand-text"}`}>{tf.label}</div>
+                        <div className={`text-xs ${timeframe === tf.id ? "text-white/60" : "text-brand-muted"}`}>{tf.desc}</div>
                       </div>
                       {timeframe === tf.id && (
-                        <div className="w-6 h-6 rounded-full bg-brand-accent flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
+                        <svg className="w-5 h-5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
                       )}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
 
               <div className="flex items-center justify-between">
-                <Link href="/" className="text-sm text-brand-muted hover:text-brand-text transition-smooth">
+                <Link href="/" className="text-sm text-brand-muted hover:text-brand-text transition-colors">
                   &larr; Home
                 </Link>
                 <button
                   onClick={handleCatchUp}
                   disabled={!canSubmit || loading}
-                  className={`flex items-center gap-2 px-8 py-3 font-semibold text-sm transition-smooth ${
-                    canSubmit && !loading
-                      ? "bg-brand-accent hover:bg-brand-accentHover text-white glow"
-                      : "bg-brand-border text-brand-muted cursor-not-allowed"
-                  }`}
+                  className={`btn-primary ${(!canSubmit || loading) ? "opacity-40 cursor-not-allowed" : ""}`}
                 >
                   {loading ? (
                     <>
@@ -232,8 +209,8 @@ export default function CatchUp() {
                   ) : (
                     <>
                       Catch Me Up
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </>
                   )}
@@ -241,18 +218,17 @@ export default function CatchUp() {
               </div>
             </div>
           ) : (
-            /* Results */
             <div>
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-brand-text">Your Catch-Up</h2>
+                  <h2 className="text-2xl font-bold text-brand-text">Your Catch-Up</h2>
                   <p className="text-sm text-brand-muted mt-0.5">
                     {stories.length} stories from the last {timeframe === "1" ? "24 hours" : timeframe === "3" ? "3 days" : "week"}
                   </p>
                 </div>
                 <button
                   onClick={() => { setStories(null); setError(""); }}
-                  className="text-sm text-brand-accent hover:text-brand-accentHover transition-smooth font-medium"
+                  className="text-sm text-brand-text hover:text-brand-muted transition-colors font-medium underline"
                 >
                   Start over
                 </button>
@@ -261,46 +237,49 @@ export default function CatchUp() {
               {stories.length > 0 ? (
                 <div className="space-y-4">
                   {stories.map((story, i) => (
-                    <div
-                      key={i}
-                      className="p-5 index-card pt-9"
-                    >
+                    <div key={i} className="p-6 border border-brand-border rounded-xl">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-semibold text-brand-accent uppercase tracking-wider">
+                        <span className="text-xs font-semibold text-brand-subtle uppercase tracking-wider">
                           {TOPICS.find((t) => t.id === story.topic)?.label || story.topic}
                         </span>
                         <span className="text-brand-border">&middot;</span>
-                        <span className="text-xs text-brand-muted">{story.date}</span>
+                        <span className="text-xs text-brand-subtle">{story.date}</span>
                       </div>
-                      <h3 className="font-display text-brand-text font-semibold mb-1.5 leading-snug">{story.headline}</h3>
+                      <h3 className="font-semibold text-brand-text mb-1.5 leading-snug">{story.headline}</h3>
                       <p className="text-sm text-brand-muted leading-relaxed">{story.summary}</p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12">
+                <div className="text-center py-12 border border-brand-border rounded-xl">
                   <p className="text-brand-muted">No stories found for the selected topics and timeframe.</p>
                 </div>
               )}
 
-              <div className="mt-10 p-6 index-card text-center">
-                <p className="text-brand-muted text-sm mb-3">
-                  Want this delivered to your inbox automatically?
-                </p>
-                <Link
-                  href="/subscribe"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-white font-semibold text-sm transition-smooth" style={{ borderRadius: "2px" }}
-                >
+              <div className="mt-10 p-8 border border-brand-border rounded-2xl text-center bg-brand-section">
+                <p className="font-semibold text-brand-text mb-2">Want this delivered automatically?</p>
+                <p className="text-sm text-brand-muted mb-6">Subscribe to Papertrail for daily personalized briefings in your inbox.</p>
+                <Link href="/subscribe" className="btn-primary text-xs py-3 px-6">
                   Subscribe Free
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
                 </Link>
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-brand-dark border-t border-white/10 py-10 px-6 sm:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <span className="text-sm font-bold text-white/70">papertrail</span>
+          <div className="flex items-center gap-8">
+            {[["Explore","/explore"],["Catch Me Up","/catchup"],["Preferences","/settings"],["Subscribe","/subscribe"]].map(([label,href])=>(
+              <Link key={href} href={href} className="text-xs text-white/40 hover:text-white/80 transition-colors link-underline">{label}</Link>
+            ))}
+          </div>
+          <span className="text-xs text-white/30 font-mono">&copy; 2026 Papertrail</span>
+        </div>
+      </footer>
     </div>
   );
 }
