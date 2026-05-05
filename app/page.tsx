@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white text-brand-text">
+    <div className="bg-brand-bg text-brand-text">
 
       {/* ── Nav ─────────────────────────────────────────────── */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "nav-scrolled" : "bg-transparent"}`}>
@@ -79,8 +79,9 @@ export default function Home() {
       <section className="min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 sm:px-10">
         <div className="max-w-4xl mx-auto w-full">
           <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-6">
-            <motion.h1 variants={fadeUp} className="text-display-lg font-extrabold text-brand-text leading-none tracking-tightest max-w-3xl">
-              Everything you follow.<br />Nothing you don&apos;t.
+            <motion.h1 variants={fadeUp} className="text-display-lg font-bold text-brand-text leading-none tracking-tightest max-w-3xl">
+              <span className="hero-gradient-text">Everything you follow.</span><br />
+              <span>Nothing you don&apos;t.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-brand-muted max-w-md leading-relaxed">
               Tell us what you follow. Wake up to a brief built around every single thing on your list — every morning, in your inbox.
@@ -122,7 +123,7 @@ export default function Home() {
               { niche: "TSLA",    update: "Up 4.2% after delivery beat. Musk hints Model 2 reveal. BofA upgrades to Buy, PT $280." },
               { niche: "Bitcoin", update: "Crosses $72K on ETF inflow surge. BlackRock expands holdings by 18K BTC. Options market pricing further upside through month-end." },
             ].map(({ niche, update }) => (
-              <motion.div key={niche} variants={fadeUp} className="p-5 bg-white border border-brand-border rounded-xl">
+              <motion.div key={niche} variants={fadeUp} className="p-5 bg-brand-bg border border-brand-border rounded-xl">
                 <p className="text-xs font-bold text-brand-text uppercase tracking-widest mb-2">{niche}</p>
                 <p className="text-sm text-brand-muted leading-relaxed">{update}</p>
               </motion.div>
@@ -135,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* ── How it works ────────────────────────────────────── */}
-      <section className="py-16 px-6 sm:px-10 bg-white">
+      <section className="py-16 px-6 sm:px-10 bg-brand-bg">
         <div className="max-w-4xl mx-auto">
           <Section>
             <motion.h2 variants={fadeUp} className="text-display-md font-bold text-brand-text mb-10 max-w-xs leading-tight">
@@ -147,7 +148,7 @@ export default function Home() {
                 { n: "02", title: "Pick your schedule",      body: "Daily, a few times a week, or weekly. Arrives in your inbox on your schedule." },
                 { n: "03", title: "Read in five minutes",    body: "A sharp, focused brief built around everything on your list. Yours, every morning." },
               ].map((s) => (
-                <motion.div key={s.n} variants={fadeUp} className="bg-white p-7 flex flex-col gap-4">
+                <motion.div key={s.n} variants={fadeUp} className="bg-brand-bg p-7 flex flex-col gap-4">
                   <span className="label text-brand-subtle">{s.n}</span>
                   <h3 className="text-base font-bold text-brand-text leading-snug">{s.title}</h3>
                   <p className="text-brand-muted text-sm leading-relaxed">{s.body}</p>
@@ -159,10 +160,17 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA ────────────────────────────────────────── */}
-      <section className="py-24 px-6 sm:px-10 bg-brand-dark text-white">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative py-24 px-6 sm:px-10 bg-brand-dark text-white overflow-hidden">
+        {/* Gradient orb */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] opacity-[0.18] blur-3xl rounded-full"
+            style={{ background: "linear-gradient(90deg, #2483ff 0%, #ff66f4 40%, #ff3029 70%, #fe7b02 100%)" }}
+          />
+        </div>
+        <div className="relative max-w-3xl mx-auto text-center">
           <Section>
-            <motion.h2 variants={fadeUp} className="text-display-md font-extrabold text-white mb-4 tracking-tightest">
+            <motion.h2 variants={fadeUp} className="text-display-md font-bold text-white mb-4 tracking-tightest">
               Your first brief lands tomorrow.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/60 mb-10 max-w-sm mx-auto text-sm leading-relaxed">
@@ -174,7 +182,7 @@ export default function Home() {
                 value={heroEmail}
                 onChange={(e) => setHeroEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm outline-none focus:border-white/60 transition-colors"
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/30 text-sm outline-none focus:border-white/50 transition-colors rounded-[1.75rem]"
               />
               <motion.button
                 type="submit"
@@ -225,7 +233,7 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="exit"
-              className="fixed top-0 right-0 h-full z-50 w-full max-w-xs bg-white shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 h-full z-50 w-full max-w-xs bg-brand-bg shadow-2xl flex flex-col"
             >
               {/* Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-brand-border flex-shrink-0">

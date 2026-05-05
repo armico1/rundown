@@ -106,11 +106,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   };
 
   return (
-    <div className="bg-white text-brand-text min-h-screen">
+    <div className="bg-brand-bg text-brand-text min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-bg border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold tracking-tight text-brand-text">
             KYN

@@ -108,9 +108,9 @@ export default function Subscribe() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-bg">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-brand-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-bg/90 backdrop-blur-sm border-b border-brand-border">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-base font-extrabold text-brand-text">KYN</Link>
           <div className="flex items-center gap-1.5">
@@ -180,7 +180,7 @@ export default function Subscribe() {
                         className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl border text-left transition-all duration-200 ${
                           frequency === f.id
                             ? "bg-brand-dark text-white border-brand-dark"
-                            : "bg-white text-brand-text border-brand-border hover:border-brand-dark/30"
+                            : "bg-brand-bg text-brand-text border-brand-border hover:border-brand-dark/30"
                         }`}
                       >
                         <div>
@@ -211,7 +211,7 @@ export default function Subscribe() {
                         className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl border text-left transition-all duration-200 ${
                           format === f.id
                             ? "bg-brand-dark text-white border-brand-dark"
-                            : "bg-white text-brand-text border-brand-border hover:border-brand-dark/30"
+                            : "bg-brand-bg text-brand-text border-brand-border hover:border-brand-dark/30"
                         }`}
                       >
                         <span className="text-2xl">{f.icon}</span>

@@ -51,10 +51,10 @@ export default function CatchUp() {
   };
 
   return (
-    <div className="bg-white text-brand-text min-h-screen">
+    <div className="bg-brand-bg text-brand-text min-h-screen">
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-bg border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <Link href="/" className="text-base font-extrabold tracking-tight text-brand-text">KYN</Link>
           <div className="hidden sm:flex items-center gap-8">
@@ -107,7 +107,7 @@ export default function CatchUp() {
                       className={`w-full flex items-center justify-between px-5 py-4 rounded-xl border text-left transition-colors ${
                         timeframe === tf.id
                           ? "bg-brand-dark border-brand-dark text-white"
-                          : "border-brand-border bg-white hover:border-brand-dark"
+                          : "border-brand-border bg-brand-bg hover:border-brand-dark"
                       }`}
                     >
                       <div>
