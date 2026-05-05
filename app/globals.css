@@ -23,22 +23,39 @@ body {
   color: #fcfbf8;
 }
 
-/* ── Hero gradient text ──────────────────────────────────────── */
-.hero-gradient-text {
-  background: linear-gradient(90deg,
-    #1c1c1c 0%,
-    #1c1c1c 18%,
-    #2483ff 34%,
-    #ff66f4 50%,
-    #ff3029 64%,
-    #fe7b02 76%,
-    #1c1c1c 90%,
-    #1c1c1c 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+/* ── Hero input (shadow-subtle-2 from Lovable spec) ─────────── */
+.input-hero {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: #fcfbf8;
+  border: none;
+  border-radius: 1.75rem;
+  font-size: 1rem;
+  letter-spacing: -0.025em;
+  color: #1c1c1c;
+  outline: none;
+  box-shadow:
+    rgba(0,0,0,0.08) 0px 0.5px 0px 0px inset,
+    rgba(0,0,0,0.16) 0px -0.5px 0px 0px inset,
+    rgb(0,0,0) 0px 0px 0px 0.5px inset,
+    rgba(255,255,255,0.24) 0px 1px 0px 0px inset,
+    rgba(255,255,255,0.16) 0px -1px 0px 0px inset,
+    rgba(0,0,0,0.12) 0px 2px 2px -1px,
+    rgba(0,0,0,0.12) 0px 4px 4px -2px;
+  transition: box-shadow 0.2s ease;
+}
+.input-hero::placeholder {
+  color: #9e9d9b;
+}
+.input-hero:focus {
+  box-shadow:
+    rgba(0,0,0,0.10) 0px 0.5px 0px 0px inset,
+    rgba(0,0,0,0.18) 0px -0.5px 0px 0px inset,
+    rgb(0,0,0) 0px 0px 0px 0.75px inset,
+    rgba(255,255,255,0.24) 0px 1px 0px 0px inset,
+    rgba(255,255,255,0.16) 0px -1px 0px 0px inset,
+    rgba(0,0,0,0.14) 0px 2px 2px -1px,
+    rgba(0,0,0,0.14) 0px 4px 4px -2px;
 }
 
 /* ── Typography utilities ─────────────────────────────────────── */
@@ -78,6 +95,29 @@ body {
 .btn-primary:hover {
   background: #2e2e2d;
   border-color: #2e2e2d;
+}
+
+/* Nav pill ghost button — Ghost Header Button spec (9999px radius) */
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  background: transparent;
+  color: #1c1c1c;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 9999px;
+  border: 1px solid #eceae4;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.btn-nav:hover {
+  background: #1c1c1c;
+  color: #ffffff;
+  border-color: #1c1c1c;
 }
 
 .btn-secondary {
